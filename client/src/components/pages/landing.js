@@ -26,8 +26,9 @@ class Landing extends Component {
             <ul key={dailyData.id}>
               <li>Name: {dailyData.name}</li>
               <li>Amount: {dailyData.amount}</li>
-              <li>For: {dailyData.totaldays} days</li>
+              <li>Duration: {dailyData.totaldays} days</li>
               <li>Summerry/day: ${dailyData.perday}</li>
+              <li>Type: {dailyData.type}</li>
             </ul>
           ))}
         </div>
