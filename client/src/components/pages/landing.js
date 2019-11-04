@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import './landing.css';
+import moment from 'moment';
 
 class Landing extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       data: []
     };
+    this.date = props.totalDaysInMonth;
+    this.date = props.toTheEnd;
+    this.date = props.number;
   }
 
   componentDidMount() {
@@ -18,17 +22,25 @@ class Landing extends Component {
   }
 
   render() {
+    const totalDaysInMonth = moment().daysInMonth();
+    const number = moment().format('D');
+    const toTheEnd = totalDaysInMonth - number;
+
     return (
       <div>
         <h2>Landing</h2>
         <div>
           {this.state.data.map(dailyData => (
             <ul key={dailyData.id}>
-              <li>Name: {dailyData.name}</li>
+              <li>Name: {dailyData.user_id}</li>
+              <li>Income from: {dailyData.name}</li>
               <li>Amount: {dailyData.amount}</li>
-              <li>Duration: {dailyData.totaldays} days</li>
-              <li>Summerry/day: ${dailyData.perday}</li>
+              <li>Daily amount: ${dailyData.amount / toTheEnd}</li>
               <li>Type: {dailyData.type}</li>
+              <li>============================</li>
+              <li>This month has {totalDaysInMonth} days</li>
+              <li>Today date {number} </li>
+              <li>Total day left in this month {toTheEnd} days</li>
             </ul>
           ))}
         </div>

@@ -48,3 +48,40 @@ NATURAL JOIN order_details
 GROUP BY companyname
 HAVING SUM(quantity * order_details.unitprice) > 5000
 ORDER BY AmountBought DESC;
+
+/* === HAVING SYNTAX===*/
+GROUP BY GROUPING SETS((field1),(field2)(field3, field4))
+
+/* SAMPLE */
+SELECT categoryname, productname, SUM(od.unitprice * quantity)
+FROM categories
+NATURAL JOIN products
+NATURAL JOIN order_details AS od
+GROUP BY GROUPING SETS ((categoryname),(categoryname,productname))
+ORDER BY categoryname, productname;
+
+SELECT s.companyname AS supplier, c.companyname AS byer, productname, SUM(od.unitprice * quantity)
+FROM suppliers AS s
+JOIN products USING (supplierid)
+JOIN order_details AS od USING (productid)
+JOIN orders USING (orderid)
+JOIN customers AS c USING (customerid)
+GROUP BY ROLLUP(supplier, buyer, productname)
+ORDER BY supplier, buyer, productname;
+
+/* === UNION SYNTAX ===*/
+SELECT column_names
+FROM table
+
+UNION
+
+SELECT column_names
+FROM table;
+
+/* SAMPLE */
+/* will get company name who are either supplyer or customer*/
+SELECT companyname
+FROM customers
+UNION
+SELECT companyname
+FROM suppliers;
