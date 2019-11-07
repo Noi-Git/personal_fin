@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="pageCenter">
       <Login />
+      <Main />
     </div>
   );
 }
