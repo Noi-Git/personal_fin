@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import './App.css';
 
 class Login extends Component {
   render() {
@@ -18,7 +16,6 @@ class Login extends Component {
 
           <div className="header__info">More info</div>
           <div className="header__info--icon">
-            <FontAwesomeIcon icon={['fas', 'fa-angle-down']} />
             <i className="fa fa-chevron-down" aria-hidden="true"></i>
           </div>
         </div>

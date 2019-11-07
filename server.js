@@ -12,7 +12,7 @@ app.get('/daily', (request, response, next) => {
   );
 });
 
-app.get('/dailycopy', (request, response, next) => {
+app.get('/daily_details', (request, response, next) => {
   pool.query(
     `SELECT user_id, type, name, amount FROM money_flow WHERE user_id=2 AND type='income'`,
     (err, res) => {
