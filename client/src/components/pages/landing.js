@@ -9,8 +9,8 @@ class Landing extends Component {
       data: []
     };
     this.date = props.totalDaysInMonth;
-    this.date = props.toTheEnd;
-    this.date = props.number;
+    this.date = props.toTheEndOfTheMonth;
+    this.date = props.todayDate;
   }
 
   componentDidMount() {
@@ -23,8 +23,8 @@ class Landing extends Component {
 
   render() {
     const totalDaysInMonth = moment().daysInMonth();
-    const number = moment().format('D');
-    const toTheEnd = totalDaysInMonth - number;
+    const todayDate = moment().format('D');
+    const toTheEndOfTheMonth = totalDaysInMonth - todayDate;
 
     return (
       <div>
@@ -34,13 +34,17 @@ class Landing extends Component {
             <ul key={dailyData.id}>
               <li>Name: {dailyData.user_id}</li>
               <li>Income from: {dailyData.name}</li>
-              <li>Amount: {dailyData.amount}</li>
-              <li>Daily amount: ${dailyData.amount / toTheEnd}</li>
+              <li>Total income: {dailyData.total}</li>
+              <li>Amount: ${dailyData.amount}</li>
+              <li>
+                Daily amount: $
+                {(dailyData.amount / toTheEndOfTheMonth).toFixed(2)}
+              </li>
               <li>Type: {dailyData.type}</li>
               <li>============================</li>
               <li>This month has {totalDaysInMonth} days</li>
-              <li>Today date {number} </li>
-              <li>Total day left in this month {toTheEnd} days</li>
+              <li>Today date {todayDate} </li>
+              <li>Total day left in this month {toTheEndOfTheMonth} days</li>
             </ul>
           ))}
         </div>

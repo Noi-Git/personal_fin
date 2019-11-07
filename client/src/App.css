@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhai|Raleway:400,600,700&display=swap');
+@import url('https://use.fontawesome.com/221926b180.js');
+
 .App {
   text-align: center;
 }
@@ -24,4 +27,563 @@
 .pageCenter {
   width: 70%;
   margin: 0 auto;
+}
+
+/* === START CUSTOM CSS === */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: #555;
+  padding: 3 rem;
+  box-sizing: border-box;
+}
+
+/* === MIDIA QUERY WITH MIX-IN === */
+/*
+  0 - 600px:      phone
+  600 - 900px:    tablet portrait
+  900 -1200px:    tablet landscape
+  1200 - 1800px:  most desktop screen
+  1800+           big-desktop
+
+  ==== break point arguement choices ====
+  - phone
+  - tab-port
+  - tab-land
+  - tab-desktop
+
+  1em = 16px
+*/
+/*
+@include respond(tab-port) {
+      
+    }
+
+    @include respond(tab-land) {
+      
+    }
+
+    @include respond(desktop) {
+      
+    }
+*/
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100vh;
+}
+
+.header {
+  display: grid;
+  height: 100vh;
+  align-content: center;
+  text-align: center;
+  color: #f5f5f5;
+  background-image: linear-gradient(rgba(251, 140, 0, 0.8), #ff5722),
+    url(./img/city.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+.header__title {
+  font-family: 'Baloo Bhai', cursive;
+  font-size: 4rem;
+  padding-bottom: 4rem;
+  margin-top: 3rem;
+}
+@media (min-width: 37.5em) {
+  .header__title {
+    font-size: 7rem;
+    padding-bottom: 8rem;
+  }
+}
+@media (min-width: 56.25em) {
+  .header__title {
+    font-size: 8rem;
+    padding-bottom: 6rem;
+  }
+}
+@media (min-width: 75em) {
+  .header__title {
+    padding-bottom: 8rem;
+  }
+}
+.header__tag-line {
+  font-weight: 400;
+  font-size: 1.6rem;
+  padding-bottom: 8rem;
+  margin-bottom: 4rem;
+}
+@media (min-width: 37.5em) {
+  .header__tag-line {
+    font-size: 1.8rem;
+    padding-bottom: 8rem;
+  }
+}
+@media (min-width: 56.25em) {
+  .header__tag-line {
+    font-size: 2.2rem;
+    padding-bottom: 10rem;
+  }
+}
+@media (min-width: 75em) {
+  .header__tag-line {
+    font-size: 2.5rem;
+    padding-bottom: 12rem;
+  }
+}
+.header__info {
+  padding-top: 6rem;
+}
+.header__info--icon {
+  padding-top: 2rem;
+}
+
+/* === MAIN PAGE === */
+.main__body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 12vh;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+  background-image: linear-gradient(
+    #ff5722,
+    rgba(251, 140, 0, 0.8),
+    rgba(255, 255, 255, 0.5)
+  );
+}
+@media (min-width: 37.5em) {
+  .main__body {
+    padding-bottom: 8rem;
+  }
+}
+@media (min-width: 56.25em) {
+  .main__body {
+    padding-bottom: 10rem;
+  }
+}
+
+.nav {
+  font-size: 1.2rem;
+  color: #f5f5f5;
+}
+@media (min-width: 37.5em) {
+  .nav {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 56.25em) {
+  .nav {
+    font-size: 1.7rem;
+    padding-top: 3rem;
+  }
+}
+.nav__navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-top: 1rem;
+}
+.nav__info {
+  font-size: 1.6rem;
+  padding-top: 1.6rem;
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  background-color: #ff5722;
+}
+@media (min-width: 37.5em) {
+  .nav__info {
+    border-bottom: 0.3px solid #e94514;
+  }
+}
+@media (min-width: 56.25em) {
+  .nav__info {
+    font-size: 1.8rem;
+    margin-top: -2rem;
+  }
+}
+
+.budget {
+  text-align: center;
+}
+.budget__dollar {
+  font-size: 3rem;
+  color: #f5f5f5;
+  text-shadow: 2px 2px 6px #adadad;
+}
+.budget__amount {
+  font-size: 8rem;
+  color: #f5f5f5;
+  text-shadow: 2px 2px 6px #adadad;
+}
+.budget__description {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.response__button {
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.main__balance {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  width: 94%;
+  margin: 0 auto;
+  padding: 2rem 0;
+  box-shadow: 1px 1px 2px #adadad;
+  border-radius: 0.5rem;
+}
+@media (min-width: 37.5em) {
+  .main__balance {
+    width: 82%;
+    padding: 5rem 0;
+  }
+}
+@media (min-width: 56.25em) {
+  .main__balance {
+    width: 74%;
+  }
+}
+.main__balance--title {
+  font-size: 1.6rem;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+@media (min-width: 37.5em) {
+  .main__balance--title {
+    font-size: 1.8rem;
+    padding-bottom: 2rem;
+  }
+}
+@media (min-width: 56.25em) {
+  .main__balance--title {
+    font-size: 2rem;
+    padding-bottom: 2.5rem;
+  }
+}
+.main__balance--number {
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: bold;
+}
+@media (min-width: 56.25em) {
+  .main__balance--number {
+    font-size: 2.2rem;
+  }
+}
+.main__balance--text {
+  font-size: 1.2rem;
+  text-align: center;
+}
+@media (min-width: 56.25em) {
+  .main__balance--text {
+    font-size: 1.7rem;
+  }
+}
+.main__balance--total {
+  padding-top: 2rem;
+  border-top: 1px solid #e6e5e5;
+  width: 94%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+.main__balance--add {
+  padding-top: 0.8rem;
+  display: flex;
+  justify-content: center;
+}
+.main__balance--add img {
+  width: 1.8rem;
+}
+@media (min-width: 56.25em) {
+  .main__balance--add img {
+    width: 2.2rem;
+  }
+}
+
+/* === RESOURCES === */
+.main__resources {
+  padding: 2rem 0;
+}
+
+.resource {
+  margin: 1.7rem auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}
+@media (min-width: 37.5em) {
+  .resource {
+    margin: 5rem auto 5rem auto;
+    width: 86%;
+  }
+}
+@media (min-width: 56.25em) {
+  .resource {
+    margin: 8rem auto 8rem auto;
+    width: 78%;
+  }
+}
+@media (min-width: 75em) {
+  .resource {
+    margin-top: 5rem;
+  }
+}
+.resource__link {
+  width: 28%;
+  height: 12rem;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  box-shadow: 1px 1px 2px #adadad;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+@media (min-width: 37.5em) {
+  .resource__link {
+    height: 22rem;
+    font-size: 1.5rem;
+    padding-bottom: 2rem;
+  }
+}
+@media (min-width: 56.25em) {
+  .resource__link {
+    height: 25rem;
+    font-size: 1.7rem;
+  }
+}
+@media (min-width: 75em) {
+  .resource__link {
+    height: 28rem;
+  }
+}
+.resource__link--1 {
+  background-image: url(./img/recipies.svg);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: center;
+}
+@media (min-width: 37.5em) {
+  .resource__link--1 {
+    background-size: 70%;
+  }
+}
+@media (min-width: 75em) {
+  .resource__link--1 {
+    background-size: 60%;
+  }
+}
+.resource__link--2 {
+  background-image: url(./img/ingredients.svg);
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center;
+}
+@media (min-width: 37.5em) {
+  .resource__link--2 {
+    background-size: 48%;
+  }
+}
+@media (min-width: 75em) {
+  .resource__link--2 {
+    background-size: 50%;
+  }
+}
+.resource__link--3 {
+  background-image: url(./img/job.svg);
+  background-repeat: no-repeat;
+  background-size: 35%;
+  background-position: center;
+}
+
+/* === UTILITIES ===*/
+.button-small {
+  background-color: #ff5722;
+  color: #f5f5f5;
+  border: 1px solid #ff5722;
+  border-radius: 0.5rem;
+  padding: 0.5rem 2.2rem;
+}
+
+.dollar-small {
+  font-size: 1.2rem;
+}
+
+input[type='text'],
+select {
+  width: 100%;
+  padding: 0.5rem 20px;
+  margin: 8px 0;
+  display: inline-block;
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.input--button {
+  padding-top: 2rem;
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.login--button {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 37.5em) {
+  .login--button {
+    width: 50%;
+  }
+}
+@media (min-width: 75em) {
+  .login--button {
+    width: 35%;
+  }
+}
+
+input[type='submit'] {
+  width: 40%;
+  background-color: #16a085;
+  box-shadow: 1px 4px #117a65;
+  font-size: 1.7;
+  color: white;
+  text-transform: uppercase;
+  padding: 1.5rem 2.7rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+input[type='submit']:hover {
+  background-color: #2d9681;
+}
+
+/* === INPUT === */
+.input {
+  color: #f5f5f5;
+  width: 90%;
+  margin: 0 auto;
+}
+@media (min-width: 37.5em) {
+  .input {
+    width: 70%;
+  }
+}
+@media (min-width: 75em) {
+  .input {
+    width: 50%;
+  }
+}
+.input__title {
+  font-size: 1.7rem;
+  text-align: center;
+  padding-bottom: 3rem;
+}
+@media (min-width: 37.5em) {
+  .input__title {
+    font-size: 1.9rem;
+  }
+}
+@media (min-width: 56.25em) {
+  .input__title {
+    font-size: 2.2rem;
+  }
+}
+@media (min-width: 75em) {
+  .input__title {
+    font-size: 2.5rem;
+  }
+}
+
+.input__detail label--name {
+  font-size: 1.4rem;
+  padding: 2rem 0 2.6rem 0;
+}
+@media (min-width: 37.5em) {
+  .input__detail label--name {
+    padding: 4rem 0 2.6rem 0;
+  }
+}
+@media (min-width: 56.25em) {
+  .input__detail label--name {
+    font-size: 1.7rem;
+  }
+}
+@media (min-width: 75em) {
+  .input__detail label--name {
+    padding: 4rem 0 2.6rem 0;
+  }
+}
+
+/* === SUMMERY === */
+.summery {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  width: 94%;
+  margin: 0 auto;
+  padding: 2rem 0;
+  box-shadow: 1px 1px 2px #adadad;
+  border-radius: 0.5rem;
+}
+@media (min-width: 37.5em) {
+  .summery {
+    width: 76%;
+  }
+}
+@media (min-width: 56.25em) {
+  .summery {
+    width: 70%;
+  }
+}
+@media (min-width: 75em) {
+  .summery {
+    width: 60%;
+  }
+}
+.summery__title {
+  font-size: 1.7rem;
+  text-align: center;
+  margin-top: -1.5rem;
+  padding-top: -2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e6e5e5;
+  width: 94%;
+  margin: 0 auto;
+}
+.summery__details {
+  font-size: 1.4rem;
+  padding: 1rem 0.7rem;
+  display: flex;
+  justify-content: space-between;
+}
+.summery__total {
+  font-weight: bold;
 }
