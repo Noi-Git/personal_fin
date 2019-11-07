@@ -7,7 +7,7 @@ import Main from './components/pages/main';
 
 function App() {
   return (
-    <div className="pageCenter">
+    <div>
       <Main />
     </div>
   );

@@ -5,7 +5,8 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      daily: [],
+      dailyDetails: []
     };
     this.date = props.totalDaysInMonth;
     this.date = props.toTheEndOfTheMonth;
@@ -13,17 +14,16 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    // Promise.all([fetch('/daily'), fetch('/daily_details')]).then([
-    //   user_id,
-    //   type,
-    //   name,
-    //   amount,
-    //   total
-    // ]);
-    fetch('/daily')
-      .then(res => res.json())
-      .then(data =>
-        this.setState({ data }, () => console.log('money sumarry....', data))
+    Promise.all([fetch('/daily'), fetch('/dailyDetails')])
+      .then(([resDaily, resDailyDetails]) => {
+        return Promise.all([resDaily.json(), resDailyDetails.json()]);
+      })
+      // fetch('/daily')
+      //   .then(res => res.json())
+      .then(results =>
+        this.setState({ daily: results[0], dailyDetails: results[1] }, () =>
+          console.log('money sumarry....', results)
+        )
       );
   }
 
@@ -37,8 +37,8 @@ class Main extends Component {
 
     return (
       <Fragment>
-        {this.state.data.map(dailyData => (
-          <div>
+        {this.state.daily.map(dailyData => (
+          <div key={dailyData.total}>
             <div className="main__body">
               <div className="nav">
                 <div className="nav__info">
@@ -58,41 +58,44 @@ class Main extends Component {
                 </div>
               </div>
               <div className="budget">
-                <p className="budget__amount">
-                  <span class="budget__dollar">$ </span>
-                  {(dailyData.amount / toTheEndOfTheMonth).toFixed(2)}
+                <p className="budget__amount" key={dailyData.total}>
+                  <span className="budget__dollar">$ </span>
+                  {(dailyData.total / toTheEndOfTheMonth).toFixed(2)}
                 </p>
                 <p className="budget__description">Today's Budget</p>
               </div>
             </div>
 
-            <div class="main__balance">
-              <p class="main__balance--title">Summary</p>
-              <div class="main__balance--total">
+            <div className="main__balance">
+              <p className="main__balance--title">Summary</p>
+              <div className="main__balance--total">
                 <div>
-                  <p class="main__balance--number">
-                    <span class="dollar-small">$</span> 650
+                  <p className="main__balance--number">
+                    <span className="dollar-small" key={dailyData.total}>
+                      $
+                    </span>
+                    {dailyData.total}
                   </p>
-                  <p class="main__balance--text">Income</p>
-                  <p class="main__balance--add">
+                  <p className="main__balance--text">Income</p>
+                  <p className="main__balance--add">
                     <img src="img/add-white.svg" alt="" />
                   </p>
                 </div>
                 <div>
-                  <p class="main__balance--number">
-                    <span class="dollar-small">$</span> 320.75
-                    <p class="main__balance--text">Expense</p>
-                  </p>
-                  <p class="main__balance--add">
+                  <div className="main__balance--number">
+                    <span className="dollar-small">$</span> 320.75
+                    <p className="main__balance--text">Expense</p>
+                  </div>
+                  <p className="main__balance--add">
                     <img src="img/add-white.svg" alt="" />
                   </p>
                 </div>
                 <div>
-                  <p class="main__balance--number">
-                    <span class="dollar-small">$</span> 1000
+                  <p className="main__balance--number">
+                    <span className="dollar-small">$</span> 1000
                   </p>
-                  <p class="main__balance--text">Saving</p>
-                  <p class="main__balance--add">
+                  <p className="main__balance--text">Saving</p>
+                  <p className="main__balance--add">
                     <img src="img/add-white.svg" alt="" />
                   </p>
                 </div>
