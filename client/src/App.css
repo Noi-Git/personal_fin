@@ -80,6 +80,50 @@ body {
       
     }
 */
+/* === NAVIGATION BAR === */
+.nav {
+  font-size: 1.2rem;
+  color: #f5f5f5;
+  background-color: #ff5722;
+}
+@media (min-width: 37.5em) {
+  .nav {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 56.25em) {
+  .nav {
+    font-size: 1.7rem;
+    padding-top: 3rem;
+  }
+}
+.nav__info {
+  font-size: 1.6rem;
+  padding-top: 1.6rem;
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+@media (min-width: 37.5em) {
+  .nav__info {
+    border-bottom: 0.3px solid #e94514;
+  }
+}
+@media (min-width: 56.25em) {
+  .nav__info {
+    font-size: 1.8rem;
+    margin-top: -2rem;
+  }
+}
+.nav__navbar {
+  color: #f5f5f5;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-top: 1rem;
+}
+
 .container {
   display: grid;
   grid-template-columns: 1fr;
@@ -153,71 +197,6 @@ body {
 }
 
 /* === MAIN PAGE === */
-.main__body {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 12vh;
-  margin: 0 auto;
-  padding-bottom: 4rem;
-  background-image: linear-gradient(
-    #ff5722,
-    rgba(251, 140, 0, 0.8),
-    rgba(255, 255, 255, 0.5)
-  );
-}
-@media (min-width: 37.5em) {
-  .main__body {
-    padding-bottom: 8rem;
-  }
-}
-@media (min-width: 56.25em) {
-  .main__body {
-    padding-bottom: 10rem;
-  }
-}
-
-.nav {
-  font-size: 1.2rem;
-  color: #f5f5f5;
-}
-@media (min-width: 37.5em) {
-  .nav {
-    font-size: 1.5rem;
-  }
-}
-@media (min-width: 56.25em) {
-  .nav {
-    font-size: 1.7rem;
-    padding-top: 3rem;
-  }
-}
-.nav__navbar {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  padding-top: 1rem;
-}
-.nav__info {
-  font-size: 1.6rem;
-  padding-top: 1.6rem;
-  padding-bottom: 1rem;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  background-color: #ff5722;
-}
-@media (min-width: 37.5em) {
-  .nav__info {
-    border-bottom: 0.3px solid #e94514;
-  }
-}
-@media (min-width: 56.25em) {
-  .nav__info {
-    font-size: 1.8rem;
-    margin-top: -2rem;
-  }
-}
-
 .budget {
   text-align: center;
 }
@@ -227,19 +206,19 @@ body {
   text-shadow: 2px 2px 6px #adadad;
 }
 .budget__amount {
-  font-size: 8rem;
+  font-size: 4rem;
+  padding-top: 3rem;
   color: #f5f5f5;
   text-shadow: 2px 2px 6px #adadad;
+}
+@media (min-width: 56.25em) {
+  .budget__amount {
+    font-size: 5rem;
+  }
 }
 .budget__description {
   font-size: 1.4rem;
   font-weight: bold;
-}
-
-.response__button {
-  padding: 0 1.5rem;
-  display: flex;
-  justify-content: space-around;
 }
 
 .main__balance {
@@ -249,6 +228,7 @@ body {
   width: 94%;
   margin: 0 auto;
   padding: 2rem 0;
+  margin: 0.5rem auto 0 auto;
   box-shadow: 1px 1px 2px #adadad;
   border-radius: 0.5rem;
 }
@@ -484,6 +464,60 @@ input[type='submit']:hover {
   background-color: #2d9681;
 }
 
+/* === BODY BACKGROUND === */
+.main__body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 24vh;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+  background-image: linear-gradient(
+    #ff5722,
+    rgba(251, 140, 0, 0.8),
+    rgba(255, 255, 255, 0.5)
+  );
+}
+@media (min-width: 37.5em) {
+  .main__body {
+    padding-bottom: 8rem;
+    grid-template-rows: 14vh;
+  }
+}
+@media (min-width: 56.25em) {
+  .main__body {
+    padding-bottom: 10rem;
+    grid-template-rows: 10vh;
+  }
+}
+
+.details__body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 34vh;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+  background-image: linear-gradient(
+    #ff5722,
+    rgba(251, 140, 0, 0.8),
+    rgba(255, 255, 255, 0.5)
+  );
+}
+@media (min-width: 37.5em) {
+  .details__body {
+    grid-template-rows: 26vh;
+  }
+}
+@media (min-width: 56.25em) {
+  .details__body {
+    grid-template-rows: 20vh;
+  }
+}
+@media (min-width: 75em) {
+  .details__body {
+    grid-template-rows: 26vh;
+  }
+}
+
 /* === INPUT === */
 .input {
   color: #f5f5f5;
@@ -541,33 +575,35 @@ input[type='submit']:hover {
   }
 }
 
-/* === SUMMERY === */
-.summery {
+/* === SUMMARY === */
+.summary {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   width: 94%;
-  margin: 0 auto;
+  margin: 4rem auto 0 auto;
   padding: 2rem 0;
   box-shadow: 1px 1px 2px #adadad;
   border-radius: 0.5rem;
 }
 @media (min-width: 37.5em) {
-  .summery {
+  .summary {
     width: 76%;
+    margin: 0rem auto 0 auto;
   }
 }
 @media (min-width: 56.25em) {
-  .summery {
+  .summary {
     width: 70%;
   }
 }
 @media (min-width: 75em) {
-  .summery {
+  .summary {
     width: 60%;
+    margin: 4rem auto 0 auto;
   }
 }
-.summery__title {
+.summary__title {
   font-size: 1.7rem;
   text-align: center;
   margin-top: -1.5rem;
@@ -577,12 +613,12 @@ input[type='submit']:hover {
   width: 94%;
   margin: 0 auto;
 }
-.summery__details {
+.summary__details {
   font-size: 1.4rem;
   padding: 1rem 0.7rem;
   display: flex;
   justify-content: space-between;
 }
-.summery__total {
+.summary__total {
   font-weight: bold;
 }

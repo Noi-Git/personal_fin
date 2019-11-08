@@ -32,31 +32,11 @@ class Main extends Component {
     const todayDate = moment().format('D');
     const toTheEndOfTheMonth = totalDaysInMonth - todayDate;
 
-    const dayOfTheWeek = moment().format('dddd');
-    const todayFullDate = moment().format('MMMM, D YYYY');
-
     return (
       <Fragment>
         {this.state.daily.map(dailyData => (
           <div key={dailyData.total}>
             <div className="main__body">
-              <div className="nav">
-                <div className="nav__info">
-                  <p>
-                    <i className="fa fa-home" aria-hidden="true"></i>
-                  </p>
-                  <p>
-                    <i className="fa fa-info" aria-hidden="true"></i>
-                  </p>
-                  <p>
-                    <i className="fa fa-sign-out" aria-hidden="true"></i>
-                  </p>
-                </div>
-                <div className="nav__navbar">
-                  <p>{dayOfTheWeek}</p>
-                  <p>{todayFullDate}</p>
-                </div>
-              </div>
               <div className="budget">
                 <p className="budget__amount" key={dailyData.total}>
                   <span className="budget__dollar">$ </span>
