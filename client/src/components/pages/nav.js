@@ -4,7 +4,7 @@ import moment from 'moment';
 class Nav extends Component {
   render() {
     const dayOfTheWeek = moment().format('dddd');
-    const todayFullDate = moment().format('MMMM, D YYYY');
+    const todayFullDate = moment().format('MMMM D, YYYY');
 
     return (
       <Fragment>
