@@ -1,25 +1,19 @@
 const express = require('express');
-const pool = require('./db');
+// validate - search more info at express-validator
 
 const app = express();
 
-app.get('/daily', (request, response, next) => {
-  pool.query(
-    `SELECT SUM(amount) AS total, user_id FROM money_flow WHERE user_id=2 AND type='income' GROUP BY user_id`,
-    (err, res) => {
-      response.json(res.rows);
-    }
-  );
-});
+// Connect Database
 
-app.get('/dailyDetails', (request, response, next) => {
-  pool.query(
-    `SELECT user_id, type, name, amount FROM money_flow WHERE user_id=2 AND type='income'`,
-    (err, res) => {
-      response.json(res.rows);
-    }
-  );
-});
+// Init Middleware - used to be bodyParser.json() - now do the below
+// it helps us get data from users.js when we do - req.body
+app.use(express.json({ extended: false }));
 
-const port = 5000;
-app.listen(port, () => console.log(`Server started on port ${port}`));
+app.get('/', (req, res) => res.send('API Running'));
+
+// Define Routes -- when type ex. /api/users - it will go get /routes/api/user
+app.use('/', require('./routes/api/info'));
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
