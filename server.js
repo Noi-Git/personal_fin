@@ -12,7 +12,10 @@ app.use(express.json({ extended: false }));
 app.get('/', (req, res) => res.send('API Running'));
 
 // Define Routes -- when type ex. /api/users - it will go get /routes/api/user
-app.use('/', require('./routes/api/info'));
+app.use('/', require('./routes/api/total'));
+app.use('/', require('./routes/api/income'));
+app.use('/', require('./routes/api/expense'));
+app.use('/', require('./routes/api/reserve'));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
