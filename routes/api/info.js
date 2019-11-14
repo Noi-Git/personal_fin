@@ -3,7 +3,7 @@ const router = express.Router();
 
 const pool = require('../../db/index');
 
-/* ===== GET INCOME ===== */
+/* ===== GET TOTAL ===== */
 // @route   GET routes/api/total
 // @desc    Get user total_income, total_expense, total_reserve
 // @access  Private
@@ -85,24 +85,24 @@ router.get('/income', async (req, res) => {
 // @route   GET routes/api/expense
 // @desc    Get user expense infomation
 // @access  Private
-router.get('/income', async (req, res) => {
+router.get('/expense', async (req, res) => {
   try {
-    const income_q = `
-    SELECT DISTINCT inco.*, total_income
-    FROM incomes AS inco
-    INNER JOIN (SELECT user_id, SUM(i_amount) AS total_income
-		   FROM incomes
-		   GROUP BY user_id) AS inco_total
-		   ON inco.user_id = inco_total.user_id
-		
-    ORDER BY inco.user_id`;
+    const expense_q = `
+    SELECT expe.*, total_expense
+    FROM expenses AS expe
+    INNER JOIN (SELECT user_id, SUM(e_amount) AS total_expense
+		   FROM expenses
+		   GROUP BY user_id) AS expe_total
+       ON expe.user_id = expe_total.user_id
 
-    const income_result = await pool.query(income_q); // return from query
+    ORDER BY expe.user_id`;
+
+    const expense_result = await pool.query(expense_q); // return from query
     // console.log(total_result.rows);
 
-    res.json(income_result.rows);
+    res.json(expense_result.rows);
 
-    if (!income_result) {
+    if (!expense_result) {
       //return res.status(400).json({ msg: 'There is no money infomation' });
     }
 
