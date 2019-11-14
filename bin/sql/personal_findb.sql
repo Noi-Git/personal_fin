@@ -45,3 +45,12 @@ VaLUES
 (3, 'rent', 350, 'expense', 'yes'),
 (1, 'rent', 350, 'expense', 'yes');
 
+
+SELECT table1.user_id, name, amount, table1.type, cleared, table2.total 
+FROM money_flow AS table1 
+INNER JOIN 
+(SELECT SUM(amount) AS total, user_id, type 
+FROM money_flow  
+GROUP BY user_id, type) AS table2 
+ON table1.user_id = table2.user_id AND table1.type = table2.type`;
+

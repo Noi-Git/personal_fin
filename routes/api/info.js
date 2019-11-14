@@ -1,36 +1,45 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
-const pool = require("../../db/index");
+const pool = require('../../db/index');
 
-router.get("/info", async (request, response) => {
+router.get('/total', async (request, response) => {
   try {
-    const query = `
-    SELECT table1.user_id, name, amount, table1.type, cleared, table2.total 
-    FROM money_flow AS table1 
-    INNER JOIN (SELECT SUM(amount) AS total, user_id, type FROM money_flow  GROUP BY user_id, type) AS table2 ON table1.user_id = table2.user_id AND table1.type = table2.type`;
+    const total_q = `
+    SELECT inco.user_id,inco2.total_income,  expe.total_expense, res.total_reserve
+    FROM incomes AS inco
+    LEFT JOIN
+    (SELECT user_id, SUM(i_amount) AS total_income 
+    FROM incomes 
+    WHERE user_id = 1
+    GROUP BY user_id) AS inco2 
+    ON inco.user_id = inco2.user_id
+    LEFT JOIN
+    (SELECT user_id, SUM(e_amount) AS total_expense
+    FROM expenses 
+    WHERE user_id = 1
+    GROUP BY user_id) AS expe 
+    ON expe.user_id = inco2.user_id
+    LEFT JOIN
+    (SELECT user_id, SUM(r_amount) AS total_reserve
+    FROM reserve_fund 
+    WHERE user_id = 1
+    GROUP BY user_id) AS res 
+    ON res.user_id = inco2.user_id`;
 
-    const info = await pool.query(query);
-    console.log(info.rows);
+    const total_result = await pool.query(total_q); // return from query
+    // console.log(total_result.rows);
 
-    for (let i = 0; i < info.length; i++) {
-      console.log(info[i].amount);
-      for (let prop in info[prop]) {
-        console.log("info prop: ", info[prop]);
-      }
-    }
+    response.json(total_result);
 
-    // response.json(info.rows);
-    response.json(info);
-
-    if (!info) {
+    if (!total_result) {
       //return res.status(400).json({ msg: 'There is no money infomation' });
     }
 
     // response.json(info);
   } catch (err) {
     console.log(err.message);
-    response.status(500).send("Server Error");
+    response.status(500).send('Server Error');
   }
 });
 

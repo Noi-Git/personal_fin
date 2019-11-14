@@ -1,3 +1,6 @@
+-- connect to database 
+-- $psql -U node_user money_pal
+
 CREATE TABLE users(
 	id SERIAL PRIMARY KEY,
 	username VARCHAR(30),
@@ -100,3 +103,102 @@ VaLUES
 (2, 'groceries', 43.50, 'expense', 'yes'),
 (3, 'rent', 350, 'expense', 'yes'),
 (1, 'rent', 350, 'expense', 'yes');
+
+
+-- Aggregation query
+-- Uncorreated
+SELECT user_id, SUM(i_amount) AS total_income FROM incomes GROUP BY user_id;
+SELECT user_id, SUM(e_amount) AS total_expense FROM expenses GROUP BY user_id;
+SELECT user_id, SUM(r_amount) AS total_reserve FROM reserve_fund GROUP BY user_id;
+
+SELECT inco.user_id, inco.i_name, inco.i_amount, inco.cleared, inco2.total_income
+FROM incomes AS inco
+INNER JOIN
+(SELECT user_id, SUM(i_amount) AS total_income 
+ FROM incomes 
+ GROUP BY user_id) AS inco2 
+ ON inco.user_id = inco2.user_id;
+ 
+SELECT user_id, SUM(i_amount) FROM incomes GROUP BY user_id;
+
+SELECT t1.column, t2.column, t3.column FROM table1 t1
+JOIN table2 t2 ON t1.column = t2.column
+JOIN table3 t3 ON t3.column = t2.column;
+
+
+-- select from 3 tables
+SELECT inco.i_amount, expe.e_amount, rese.r_amount FROM incomes inco
+JOIN expenses expe ON inco.user_id = expe.user_id
+JOIN reserve_fund rese ON rese.user_id = expe.user_id
+GROUP BY user_id;
+
+
+SELECT inco.user_id, inco.i_amount, inco2.total_income, expe.e_amount, expe.total_expense, res.r_amount, res.total_reserve
+FROM incomes AS inco
+INNER JOIN
+(SELECT user_id, SUM(i_amount) AS total_income 
+ FROM incomes 
+ GROUP BY user_id) AS inco2 
+ ON inco.user_id = inco2.user_id;
+INNER JOIN
+(SELECT user_id, SUM(e_amount) AS total_expense
+ FROM expenses 
+ GROUP BY user_id) AS expe 
+ ON expe.user_id = inco2.user_id
+INNER JOIN
+(SELECT user_id, SUM(r_amount) AS total_reserve
+ FROM reserve_fund 
+ GROUP BY user_id) AS res 
+ ON res.user_id = inco2.user_id;
+
+ -- working incomes and expenses
+ SELECT inco.user_id, inco.i_amount, inco2.total_income, expe.total_expense
+FROM incomes AS inco
+INNER JOIN
+(SELECT user_id, SUM(i_amount) AS total_income 
+ FROM incomes 
+ GROUP BY user_id) AS inco2 
+ ON inco.user_id = inco2.user_id
+INNER JOIN
+(SELECT user_id, SUM(e_amount) AS total_expense
+ FROM expenses 
+ GROUP BY user_id) AS expe 
+ ON expe.user_id = inco2.user_id;
+
+ -- this one get all 3 working
+ SELECT inco.user_id, inco.i_amount, inco2.total_income, expe.e_amount, expe.total_expense, res.r_amount, res.total_reserve
+FROM incomes AS inco
+INNER JOIN
+(SELECT user_id, SUM(i_amount) AS total_income 
+ FROM incomes 
+ GROUP BY user_id) AS inco2 
+ ON inco.user_id = inco2.user_id
+INNER JOIN
+(SELECT user_id, e_amount, SUM(e_amount) AS total_expense
+ FROM expenses 
+ GROUP BY user_id, e_amount) AS expe 
+ ON expe.user_id = inco2.user_id
+INNER JOIN
+(SELECT user_id, r_amount, SUM(r_amount) AS total_reserve
+ FROM reserve_fund 
+ GROUP BY user_id, r_amount) AS res 
+ ON res.user_id = inco2.user_id;
+
+ -- use this one for all totals
+ SELECT inco.user_id,inco2.total_income,  expe.total_expense, res.total_reserve
+FROM incomes AS inco
+LEFT JOIN
+(SELECT user_id, SUM(i_amount) AS total_income 
+ FROM incomes 
+ GROUP BY user_id) AS inco2 
+ ON inco.user_id = inco2.user_id
+LEFT JOIN
+(SELECT user_id, SUM(e_amount) AS total_expense
+ FROM expenses 
+ GROUP BY user_id) AS expe 
+ ON expe.user_id = inco2.user_id
+LEFT JOIN
+(SELECT user_id, SUM(r_amount) AS total_reserve
+ FROM reserve_fund 
+ GROUP BY user_id) AS res 
+ ON res.user_id = inco2.user_id;

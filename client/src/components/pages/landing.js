@@ -14,7 +14,7 @@ class Landing extends Component {
   }
 
   componentDidMount() {
-    fetch('/daily')
+    fetch('/total')
       .then(res => res.json())
       .then(data =>
         this.setState({ data }, () => console.log('money detail....', data))
