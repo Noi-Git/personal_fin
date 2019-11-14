@@ -3,7 +3,11 @@ const router = express.Router();
 
 const pool = require('../../db/index');
 
-router.get('/total', async (request, response) => {
+/* ===== GET INCOME ===== */
+// @route   GET routes/api/total
+// @desc    Get user total_income, total_expense, total_reserve
+// @access  Private
+router.get('/total', async (req, res) => {
   try {
     const total_q = `
     SELECT distinct inco.user_id,inco2.total_income,  expe.total_expense, res.total_reserve
@@ -12,28 +16,27 @@ router.get('/total', async (request, response) => {
     INNER JOIN
     (SELECT user_id, SUM(i_amount) AS total_income 
     FROM incomes 
-	  where user_id = 1
     GROUP BY user_id) AS inco2 
     ON inco.user_id = inco2.user_id
 	
     INNER JOIN
     (SELECT user_id, SUM(e_amount) AS total_expense
     FROM expenses 
-	  where user_id = 1
     GROUP BY user_id) AS expe 
     ON expe.user_id = inco2.user_id
 	
     INNER JOIN
     (SELECT user_id, SUM(r_amount) AS total_reserve
     FROM reserve_fund 
-	  where user_id = 1
     GROUP BY user_id) AS res 
-    ON res.user_id = inco2.user_id`;
+    ON res.user_id = inco2.user_id
+    
+    ORDER BY inco.user_id ASC`;
 
     const total_result = await pool.query(total_q); // return from query
     // console.log(total_result.rows);
 
-    response.json(total_result.rows[0]);
+    res.json(total_result.rows[0]);
 
     if (!total_result) {
       //return res.status(400).json({ msg: 'There is no money infomation' });
@@ -42,7 +45,71 @@ router.get('/total', async (request, response) => {
     // response.json(info);
   } catch (err) {
     console.log(err.message);
-    response.status(500).send('Server Error');
+    res.status(500).send('Server Error');
+  }
+});
+
+/* ===== GET INCOME ===== */
+// @route   GET routes/api/income
+// @desc    Get user income infomation
+// @access  Private
+router.get('/income', async (req, res) => {
+  try {
+    const income_q = `
+    SELECT DISTINCT inco.*, total_income
+    FROM incomes AS inco
+    INNER JOIN (SELECT user_id, SUM(i_amount) AS total_income
+		   FROM incomes
+		   GROUP BY user_id) AS inco_total
+		   ON inco.user_id = inco_total.user_id
+		
+    ORDER BY inco.user_id`;
+
+    const income_result = await pool.query(income_q); // return from query
+    // console.log(total_result.rows);
+
+    res.json(income_result.rows);
+
+    if (!income_result) {
+      //return res.status(400).json({ msg: 'There is no money infomation' });
+    }
+
+    // response.json(info);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+/* ===== GET EXPENSES ===== */
+// @route   GET routes/api/expense
+// @desc    Get user expense infomation
+// @access  Private
+router.get('/income', async (req, res) => {
+  try {
+    const income_q = `
+    SELECT DISTINCT inco.*, total_income
+    FROM incomes AS inco
+    INNER JOIN (SELECT user_id, SUM(i_amount) AS total_income
+		   FROM incomes
+		   GROUP BY user_id) AS inco_total
+		   ON inco.user_id = inco_total.user_id
+		
+    ORDER BY inco.user_id`;
+
+    const income_result = await pool.query(income_q); // return from query
+    // console.log(total_result.rows);
+
+    res.json(income_result.rows);
+
+    if (!income_result) {
+      //return res.status(400).json({ msg: 'There is no money infomation' });
+    }
+
+    // response.json(info);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server Error');
   }
 });
 

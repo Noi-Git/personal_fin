@@ -202,3 +202,35 @@ LEFT JOIN
  FROM reserve_fund 
  GROUP BY user_id) AS res 
  ON res.user_id = inco2.user_id;
+
+
+ -- get total income, expense, and reserve with distinct
+ SELECT distinct inco.user_id,inco2.total_income,  expe.total_expense, res.total_reserve
+    FROM incomes AS inco
+	
+    INNER JOIN
+    (SELECT user_id, SUM(i_amount) AS total_income 
+    FROM incomes 
+	 where user_id = 1
+    GROUP BY user_id) AS inco2 
+    ON inco.user_id = inco2.user_id
+	
+    INNER JOIN
+    (SELECT user_id, SUM(e_amount) AS total_expense
+    FROM expenses 
+	 	 where user_id = 1
+    GROUP BY user_id) AS expe 
+    ON expe.user_id = inco2.user_id
+	
+    INNER JOIN
+    (SELECT user_id, SUM(r_amount) AS total_reserve
+    FROM reserve_fund 
+	 	 where user_id = 1
+    GROUP BY user_id) AS res 
+    ON res.user_id = inco2.user_id
+		
+		ORDER BY inco.user_id ASC;
+
+		-- in the backend 
+		-- to get only the value of each key
+		-- response.json(income_result.rows[0]total_income);
