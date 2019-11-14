@@ -39,7 +39,7 @@ router.get('/total', async (req, res) => {
     res.json(total_result.rows[0]);
 
     if (!total_result) {
-      //return res.status(400).json({ msg: 'There is no money infomation' });
+      return res.status(400).json({ msg: 'There is no money infomation' });
     }
 
     // response.json(info);

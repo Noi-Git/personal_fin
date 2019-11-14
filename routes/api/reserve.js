@@ -24,7 +24,9 @@ router.get('/reserve', async (req, res) => {
     res.json(reserve_result.rows);
 
     if (!reserve_result) {
-      //return res.status(400).json({ msg: 'There is no money infomation' });
+      return res
+        .status(400)
+        .json({ msg: 'There is no reserve fund infomation' });
     }
 
     // response.json(info);

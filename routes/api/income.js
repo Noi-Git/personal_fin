@@ -25,7 +25,7 @@ router.get('/income', async (req, res) => {
     res.json(income_result.rows);
 
     if (!income_result) {
-      //return res.status(400).json({ msg: 'There is no money infomation' });
+      return res.status(400).json({ msg: 'There is no income infomation' });
     }
 
     // response.json(info);
