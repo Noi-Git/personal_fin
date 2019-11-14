@@ -234,3 +234,32 @@ LEFT JOIN
 		-- in the backend 
 		-- to get only the value of each key
 		-- response.json(income_result.rows[0]total_income);
+
+
+		-- ***** query individule GET endpoint ***** --
+		SELECT DISTINCT inco.*, total_income
+FROM incomes AS inco
+INNER JOIN (SELECT user_id, SUM(i_amount) AS total_income
+		   FROM incomes
+		   GROUP BY user_id) AS inco_total
+ON inco.user_id = inco_total.user_id
+		
+ORDER BY inco.user_id;
+
+
+SELECT expe.*, total_expense
+FROM expenses AS expe
+INNER JOIN (SELECT user_id, SUM(e_amount) AS total_expense
+		   FROM expenses
+		   GROUP BY user_id) AS expe_total
+ON expe.user_id = expe_total.user_id
+ORDER BY user_id;
+		   
+
+SELECT rese.*, total_reserve
+FROM reserve_fund AS rese
+INNER JOIN (SELECT user_id, SUM(r_amount) AS total_reserve
+		   FROM reserve_fund
+		   GROUP BY user_id) AS rese_total
+ON rese.user_id = rese_total.user_id
+ORDER BY user_id;
