@@ -35,4 +35,31 @@ router.get('/income', async (req, res) => {
   }
 });
 
+/* ===== POST INCOME ===== */
+// @route   POST routes/api/income
+// @desc    Post user income infomation
+// @access  Private
+router.post('/income', async (req, res) => {
+  const { user_id, i_name, i_amount, cleared } = req.body;
+  try {
+    const income_q = `
+    INSERT INTO incomes(user_id, i_name, i_amount, cleared, created_at)
+VALUES(${user_id}, '${i_name}', ${i_amount}, '${cleared}', current_timestamp) RETURNING *`;
+
+    const income_result = await pool.query(income_q); // return from query
+    // console.log(total_result.rows);
+
+    res.json(income_result.rows);
+
+    if (!income_result) {
+      return res.status(400).json({ msg: 'Fail to insert income' });
+    }
+
+    // response.json(info);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;

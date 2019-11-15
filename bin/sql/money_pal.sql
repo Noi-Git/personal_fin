@@ -3,44 +3,44 @@
 
 CREATE TABLE users(
 	id SERIAL PRIMARY KEY,
-	username VARCHAR(30),
+	username VARCHAR(90),
 	email VARCHAR(60) unique,
 	password VARCHAR(20),
 	phone VARCHAR(15),
-	created_at TIMESTAMP,
+	created_at TIMESTAMP default current_timestamp,
 	updated_at TIMESTAMP,
 	deleted_at TIMESTAMP
 );
 
 CREATE TABLE incomes(
 	id SERIAL PRIMARY KEY,
-	user_id INT REFERENCES users(id),
+	user_id INT REFERENCES users(id) NOT NULL,
 	i_name VARCHAR(50),
 	i_amount NUMERIC(15, 2),
 	cleared boolean,
-	created_at TIMESTAMP,
+	created_at TIMESTAMP default current_timestamp,
 	updated_at TIMESTAMP,
-	deleted_at TIMESTAMP
+	deleted_at TIMESTAMP 
 );
 
 CREATE TABLE expenses(
 	id SERIAL PRIMARY KEY,
-	user_id INT REFERENCES users(id),
+	user_id INT REFERENCES users(id) NOT NULL,
 	e_name VARCHAR(50),
 	e_amount NUMERIC(15, 2),
 	cleared boolean,
-	created_at TIMESTAMP,
+	created_at TIMESTAMP default current_timestamp,
 	updated_at TIMESTAMP,
-	deleted_at TIMESTAMP
+	deleted_at TIMESTAMP 
 );
 
 CREATE TABLE reserve_fund(
 	id SERIAL PRIMARY KEY,
-	user_id INT REFERENCES users(id),
+	user_id INT REFERENCES users(id) NOT NULL,
 	r_name VARCHAR(50),
 	r_amount NUMERIC(15, 2),
 	cleared boolean,
-	created_at TIMESTAMP,
+	created_at TIMESTAMP default current_timestamp,
 	updated_at TIMESTAMP,
 	deleted_at TIMESTAMP
 );
@@ -52,57 +52,57 @@ VaLUES
 ('naomi', 'naomi@gmail.com', 1234, '510-333-3333', current_timestamp);
 
 INSERT INTO incomes(user_id, i_name, i_amount, cleared, created_at)
-VALUES(1, 'work at place 1', 400.25, 'yes', current_timestamp),
-(2, 'work at place 1', 600.00, 'yes', current_timestamp),
-(1, 'work at place 2', 200.75, 'yes', current_timestamp),
-(3, 'work at place 1', 800.00, 'yes', current_timestamp),
-(2, 'work at place 2', 320.75, 'yes', current_timestamp),
-(1, 'work at place 3', 558.00, 'yes', current_timestamp),
-(3, 'work at place 2', 1020.75, 'yes', current_timestamp),
-(2, 'work at place 3', 1550.00, 'yes', current_timestamp);
+VALUES(7, 'work at place 1', 400.25, 'yes', current_timestamp),
+(8, 'work at place 1', 600.00, 'yes', current_timestamp),
+(7, 'work at place 2', 200.75, 'yes', current_timestamp),
+(9, 'work at place 1', 800.00, 'yes', current_timestamp),
+(8, 'work at place 2', 320.75, 'yes', current_timestamp),
+(7, 'work at place 3', 558.00, 'yes', current_timestamp),
+(9, 'work at place 2', 1020.75, 'yes', current_timestamp),
+(8, 'work at place 3', 1550.00, 'yes', current_timestamp);
 
 INSERT INTO expenses(user_id, e_name, e_amount, cleared, created_at)
-VALUES(1, 'gas', 40.25, 'yes', current_timestamp),
-(2, 'groceries', 35.00, 'yes', current_timestamp),
-(1, 'lunch', 12.75, 'yes', current_timestamp),
-(3, 'rent', 800.00, 'yes', current_timestamp),
-(2, 'rent', 1200.00, 'yes', current_timestamp),
-(1, 'rent', 450.00, 'yes', current_timestamp),
-(2, 'cake', 8.96, 'yes', current_timestamp),
-(1, 'lunch', 8.00, 'yes', current_timestamp),
-(3, 'dinner', 10.20, 'yes', current_timestamp),
-(2, 'breakfast', 5.00, 'yes', current_timestamp),
-(1, 'coffee', 3.25, 'yes', current_timestamp),
-(3, 'lunch', 12.50, 'yes', current_timestamp),
-(3, 'groceries', 75.25, 'yes', current_timestamp),
-(2, 'cloths', 125.00, 'yes', current_timestamp);
+VALUES(7, 'gas', 40.25, 'yes', current_timestamp),
+(7, 'groceries', 35.00, 'yes', current_timestamp),
+(8, 'lunch', 12.75, 'yes', current_timestamp),
+(7, 'rent', 800.00, 'yes', current_timestamp),
+(9, 'rent', 1200.00, 'yes', current_timestamp),
+(9, 'rent', 450.00, 'yes', current_timestamp),
+(8, 'cake', 8.96, 'yes', current_timestamp),
+(7, 'lunch', 8.00, 'yes', current_timestamp),
+(8, 'dinner', 10.20, 'yes', current_timestamp),
+(8, 'breakfast', 5.00, 'yes', current_timestamp),
+(7, 'coffee', 3.25, 'yes', current_timestamp),
+(9, 'lunch', 12.50, 'yes', current_timestamp),
+(9, 'groceries', 75.25, 'yes', current_timestamp),
+(8, 'cloths', 125.00, 'yes', current_timestamp);
 
 INSERT INTO reserve_fund(user_id, r_name, r_amount, cleared, created_at)
-VALUES(1, 'rent', 200.25, 'yes', current_timestamp),
-(2, 'birthday', 35.00, 'yes',  current_timestamp),
-(1, 'vacation', 12.75, 'yes',  current_timestamp),
-(3, 'new car', 800.00, 'yes',  current_timestamp),
-(2, 'rent', 400.00, 'yes',  current_timestamp);
+VALUES(7, 'rent', 200.25, 'yes', current_timestamp),
+(8, 'birthday', 35.00, 'yes',  current_timestamp),
+(7, 'vacation', 12.75, 'yes',  current_timestamp),
+(9, 'new car', 800.00, 'yes',  current_timestamp),
+(8, 'rent', 400.00, 'yes',  current_timestamp);
 
 
 
 INSERT INTO money_flow(user_id, name, amount, type, cleared)
 VaLUES
-(1, 'work1', 750, 'income', 'yes'),
-(3, 'work1', 550, 'income', 'yes'),
-(3, 'lunch', 10, 'expense', 'yes'),
-(1, 'groceries', 35, 'expense', 'yes'),
-(1, 'groceries', 15, 'expense', 'yes'),
-(1, 'ice-cream', 5, 'expense', 'yes'),
-(1, 'bart', 50, 'expense', 'yes'),
-(2, 'work1', 250, 'income', 'yes'),
-(2, 'work2', 600, 'income', 'yes'),
-(2, 'bart', 30, 'expense', 'yes'),
-(2, 'rent', 300, 'expense', 'yes'),
-(3, 'lunch', 10, 'expense', 'yes'),
-(2, 'groceries', 43.50, 'expense', 'yes'),
-(3, 'rent', 350, 'expense', 'yes'),
-(1, 'rent', 350, 'expense', 'yes');
+(7, 'work1', 750, 'income', 'yes'),
+(9, 'work1', 550, 'income', 'yes'),
+(9, 'lunch', 10, 'expense', 'yes'),
+(7, 'groceries', 35, 'expense', 'yes'),
+(7, 'groceries', 15, 'expense', 'yes'),
+(7, 'ice-cream', 5, 'expense', 'yes'),
+(7, 'bart', 50, 'expense', 'yes'),
+(8, 'work1', 250, 'income', 'yes'),
+(8, 'work2', 600, 'income', 'yes'),
+(8, 'bart', 30, 'expense', 'yes'),
+(8, 'rent', 300, 'expense', 'yes'),
+(9, 'lunch', 10, 'expense', 'yes'),
+(8, 'groceries', 43.50, 'expense', 'yes'),
+(9, 'rent', 350, 'expense', 'yes'),
+(7, 'rent', 350, 'expense', 'yes');
 
 
 -- Aggregation query
