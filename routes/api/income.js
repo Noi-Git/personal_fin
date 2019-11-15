@@ -62,4 +62,58 @@ VALUES(${user_id}, '${i_name}', ${i_amount}, '${cleared}', current_timestamp) RE
   }
 });
 
+/* ===== UPDATE INCOME ===== */
+// @route   PUT routes/api/income
+// @desc    Update user income infomation
+// @access  Private
+router.put('/income/:user_id', async (req, res) => {
+  const { user_id, id, i_name, i_amount, cleared } = req.body;
+  try {
+    const update_income_q = `
+    UPDATE incomes SET i_name='${i_name}', i_amount='${i_amount}', cleared='${cleared}', updated_at=${NOW()}
+WHERE id=${id} AND user_id=${user_id}`;
+
+    const updated_income_result = await pool.query(update_income_q); // return from query
+    // console.log(total_result.rows);
+
+    res.json(updated_income_result.rows);
+
+    if (!updated_income_result) {
+      return res.status(400).json({ msg: 'Fail to insert income' });
+    }
+
+    // response.json(info);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+/* ===== DELETE INCOME ===== */
+// @route   DELETE routes/api/income
+// @desc    Delete user income infomation
+// @access  Private
+router.delete('/income/:user_id', async (req, res) => {
+  const { user_id, id } = req.body;
+  try {
+    const delete_income_q = `
+    DELETE FROM incomes
+WHERE id=${id} AND user_id=${user_id}`;
+
+    const delete_income_result = await pool.query(delete_income_q); // return from query
+    // console.log(total_result.rows);
+
+    res.json(delete_income_result.rows);
+
+    if (!delete_income_result) {
+      return res.status(400).json({ msg: 'Fail to insert income' });
+    }
+
+    // response.json(info);
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;
