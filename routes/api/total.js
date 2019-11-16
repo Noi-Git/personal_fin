@@ -36,7 +36,7 @@ router.get('/total', async (req, res) => {
     const total_result = await pool.query(total_q); // return from query
     // console.log(total_result.rows);
 
-    res.json(total_result.rows[0]);
+    res.json(total_result.rows);
 
     if (!total_result) {
       return res.status(400).json({ msg: 'There is no money infomation' });

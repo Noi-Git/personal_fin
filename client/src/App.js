@@ -1,17 +1,21 @@
 import React from 'react';
 import './App.css';
-import Landing from './components/pages/landing';
-import Date from './components/pages/date';
-import Login from './components/pages/login';
-import Main from './components/pages/main';
-import Details from './components/pages/details';
-import Nav from './components/pages/nav';
+
+// import Login from './components/layout/login';
+import Navbar from './components/layout/Navbar';
+import Totals from './components/main_page/Totals';
+// import CardSummary from './components/main_page/CardSummary';
 
 function App() {
   return (
     <div>
-      <Nav />
-      <Main />
+      <Navbar
+        i_home="fa fa-home"
+        i_info="fa fa-info"
+        i_signout="fa fa-sign-out"
+      />
+
+      <Totals />
     </div>
   );
 }

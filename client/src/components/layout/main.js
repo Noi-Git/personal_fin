@@ -13,19 +13,19 @@ class Main extends Component {
     this.date = props.todayDate;
   }
 
-  componentDidMount() {
-    Promise.all([fetch('/daily'), fetch('/dailyDetails')])
-      .then(([resDaily, resDailyDetails]) => {
-        return Promise.all([resDaily.json(), resDailyDetails.json()]);
-      })
-      // fetch('/daily')
-      //   .then(res => res.json())
-      .then(results =>
-        this.setState({ daily: results[0], dailyDetails: results[1] }, () =>
-          console.log('money sumarry....', results)
-        )
-      );
-  }
+  // componentDidMount() {
+  //   Promise.all([fetch('/daily'), fetch('/dailyDetails')])
+  //     .then(([resDaily, resDailyDetails]) => {
+  //       return Promise.all([resDaily.json(), resDailyDetails.json()]);
+  //     })
+  //     // fetch('/daily')
+  //     //   .then(res => res.json())
+  //     .then(results =>
+  //       this.setState({ daily: results[0], dailyDetails: results[1] }, () =>
+  //         console.log('money sumarry....', results)
+  //       )
+  //     );
+  // }
 
   render() {
     const totalDaysInMonth = moment().daysInMonth();

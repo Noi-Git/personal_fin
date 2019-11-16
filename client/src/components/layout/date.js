@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './landing.css';
 import moment from 'moment';
 
 class Date extends Component {
