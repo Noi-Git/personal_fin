@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Display from './Display';
 import CardSummary from './CardSummary';
 import TotalDisplay from './TotalDisplay';
+import Resources from './Resources';
 // import axios from 'axios';
 
 class Totals extends Component {
@@ -39,17 +40,22 @@ class Totals extends Component {
         <CardSummary title="Summary">
           <TotalDisplay
             total_amount={this.state.total_income}
-            total_type="income"
+            total_type="Income"
           />
           <TotalDisplay
             total_amount={this.state.total_expense}
-            total_type="expense"
+            total_type="Expense"
           />
           <TotalDisplay
             total_amount={this.state.total_reserve}
-            total_type="reserve_fund"
+            total_type="Reserve_fund"
           />
         </CardSummary>
+        <Resources
+          recipies_title="Recipies"
+          ingredients_title="Ingredients"
+          job_title="Local Job"
+        />
       </Fragment>
     );
   }
