@@ -2,8 +2,23 @@ import React, { Component, Fragment } from 'react';
 import Display from './Display';
 import CardSummary from './CardSummary';
 import TotalDisplay from './TotalDisplay';
+// import axios from 'axios';
 
 class Totals extends Component {
+  /*state = {
+    users: [],
+    loading: false
+  };
+
+  async componentDidMount() {
+    this.setState({loading: true});
+
+    const res = await axios.get('http://localhost:5000/total');
+
+    this.setState({ users: res.data, loading: false});
+
+  }*/
+
   constructor() {
     super();
     this.state = {
