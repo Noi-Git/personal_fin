@@ -14,6 +14,7 @@ const TotalDisplay = props => {
             aria-hidden="true"
             style={{ color: '#ff5722', padding: '0px 15px' }}
           ></i>
+
           <i
             className="fa fa-pencil icon_summary"
             aria-hidden="true"

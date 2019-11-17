@@ -4,7 +4,7 @@ import './App.css';
 // import Login from './components/layout/login';
 import Navbar from './components/layout/Navbar';
 import Totals from './components/main_page/Totals';
-// import CardSummary from './components/main_page/CardSummary';
+import AddMain from './components/add_page/AddMain';
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
       />
 
       <Totals />
+      <AddMain />
     </div>
   );
 }
