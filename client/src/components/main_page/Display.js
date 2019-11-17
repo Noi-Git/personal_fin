@@ -1,20 +1,24 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
+import moment from 'moment';
 
-export class Display extends Component {
-  render() {
-    return (
-      <Fragment>
-        <div class="main__body">
-          <div class="budget">
-            <p class="budget__amount">
-              <span class="budget__dollar">$ </span>20
-            </p>
-            <p class="budget__description">Today's Budget</p>
-          </div>
+const Display = props => {
+  const totalDaysInMonth = moment().daysInMonth();
+  const todayDate = moment().format('D');
+  const toTheEndOfTheMonth = totalDaysInMonth - todayDate;
+
+  return (
+    <Fragment>
+      <div className="main__body">
+        <div className="budget">
+          <p className="budget__amount">
+            <span className="budget__dollar">$ </span>
+            {(props.daily_amount / toTheEndOfTheMonth).toFixed(2)}
+          </p>
+          <p className="budget__description">{props.display_title}</p>
         </div>
-      </Fragment>
-    );
-  }
-}
+      </div>
+    </Fragment>
+  );
+};
 
 export default Display;
