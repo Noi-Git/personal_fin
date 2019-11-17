@@ -7,7 +7,7 @@ const pool = require('../../db/index');
 // @route   GET routes/api/income
 // @desc    Get user income infomation
 // @access  Private
-router.get('/income', async (req, res) => {
+router.get('/get/income', async (req, res) => {
   try {
     const income_q = `
     SELECT DISTINCT inco.*, total_income
@@ -38,7 +38,7 @@ router.get('/income', async (req, res) => {
 // @route   POST routes/api/income
 // @desc    Post user income infomation
 // @access  Private
-router.post('/income', async (req, res) => {
+router.post('/post/income', async (req, res) => {
   const { user_id, i_name, i_amount, cleared } = req.body;
   try {
     const income_q = `
@@ -65,7 +65,7 @@ VALUES(${user_id}, '${i_name}', ${i_amount}, '${cleared}', current_timestamp) RE
 // @route   PUT routes/api/income
 // @desc    Update user income infomation
 // @access  Private
-router.put('/income', async (req, res) => {
+router.put('/put/income', async (req, res) => {
   const { user_id, id, i_name, i_amount } = req.body;
   try {
     //     const update_income_q = `
@@ -119,7 +119,7 @@ router.put('/income', async (req, res) => {
 // @route   DELETE routes/api/income
 // @desc    Delete user income infomation
 // @access  Private
-router.delete('/income', async (req, res) => {
+router.delete('/delete/income', async (req, res) => {
   const { id } = req.body;
   try {
     const delete_income_q = `DELETE FROM incomes WHERE id=$1`;

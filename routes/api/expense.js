@@ -7,7 +7,7 @@ const pool = require('../../db/index');
 // @route   GET routes/api/expense
 // @desc    Get user expense infomation
 // @access  Private
-router.get('/expense', async (req, res) => {
+router.get('/get/expense', async (req, res) => {
   try {
     const expense_q = `
     SELECT expe.*, total_expense
@@ -39,7 +39,7 @@ router.get('/expense', async (req, res) => {
 // @route   POST routes/api/expense
 // @desc    Post user expense infomation
 // @access  Private
-router.post('/expense', async (req, res) => {
+router.post('/post/expense', async (req, res) => {
   const { user_id, e_name, e_amount } = req.body;
   try {
     const expense_q = `
@@ -66,7 +66,7 @@ VALUES(${user_id}, '${e_name}', ${e_amount}, current_timestamp) RETURNING *`;
 // @route   PUT routes/api/expense
 // @desc    Update user expense infomation
 // @access  Private
-router.put('/expense', async (req, res) => {
+router.put('/put/expense', async (req, res) => {
   const { user_id, id, e_name, e_amount } = req.body;
   try {
     // update expense and name of user_id: 'x' and id: 'y'
@@ -111,7 +111,7 @@ router.put('/expense', async (req, res) => {
 // @route   DELETE routes/api/expense
 // @desc    Delete user expense infomation
 // @access  Private
-router.delete('/expense', async (req, res) => {
+router.delete('/delete/expense', async (req, res) => {
   const { id } = req.body;
   try {
     const delete_expense_q = `DELETE FROM expenses WHERE id=$1`;

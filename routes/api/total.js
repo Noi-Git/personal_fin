@@ -7,7 +7,7 @@ const pool = require('../../db/index');
 // @route   GET routes/api/total
 // @desc    Get user total_income, total_expense, total_reserve
 // @access  Private
-router.get('/total', async (req, res) => {
+router.get('/get/total', async (req, res) => {
   try {
     const total_q = `
     SELECT distinct inco.user_id,inco2.total_income,  expe.total_expense, res.total_reserve
