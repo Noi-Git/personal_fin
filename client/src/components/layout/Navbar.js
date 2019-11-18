@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '../../react-auth0-spa';

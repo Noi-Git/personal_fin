@@ -1,4 +1,4 @@
 {
-  "domain": "dev--gak610i.auth0.com",
-  "clientId": "3qwPT5l9RgcFpOqoCh31UFAWwVp6MewZ"
+  "domain": "AUTH0_DOMAIN",
+  "clientId": "AUTH0_CLIENT_ID"
 }
