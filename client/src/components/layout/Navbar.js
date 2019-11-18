@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
   static defaultProps = {
@@ -16,9 +17,15 @@ class Navbar extends Component {
       <Fragment>
         <div className="nav">
           <div className="nav__info">
-            <i className={this.props.i_home} aria-hidden="true"></i>
-            <i className={this.props.i_info} aria-hidden="true"></i>
-            <i className={this.props.i_signout} aria-hidden="true"></i>
+            <Link to="/">
+              <i className={this.props.i_home} aria-hidden="true"></i>
+            </Link>
+            <Link to="/info">
+              <i className={this.props.i_info} aria-hidden="true"></i>
+            </Link>
+            <Link to="/login">
+              <i className={this.props.i_signout} aria-hidden="true"></i>
+            </Link>
           </div>
           <div className="nav__navbar">
             <p key={dayOfTheWeek}>{dayOfTheWeek}</p>
