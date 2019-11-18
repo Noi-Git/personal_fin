@@ -13,7 +13,7 @@ const Navbar = props => {
     <Fragment>
       <div className="nav">
         <div className="nav__info">
-          <Link to="/">
+          <Link to="/main_page">
             <i className={props.i_home} aria-hidden="true"></i>
           </Link>
           <Link to="/info">

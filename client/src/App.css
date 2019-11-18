@@ -309,7 +309,8 @@ body {
   height: 12rem;
   border-radius: 0.5rem;
   font-size: 1.1rem;
-  box-shadow: 1px 1px 2px #adadad;
+  border: 1px solid #ebeaea;
+  box-shadow: 2px 1px 2px #adadad;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -557,13 +558,13 @@ input[type='submit']:hover {
   width: 94%;
   margin: 4rem auto;
   padding: 2rem 0;
-  box-shadow: 1px 1px 2px #adadad;
+  box-shadow: 1px 1px 3px 1px #adadad;
   border-radius: 0.5rem;
 }
 @media (min-width: 37.5em) {
   .summary {
     width: 76%;
-    margin: 0rem auto 0 auto;
+    margin: 10rem auto 0 auto;
   }
 }
 @media (min-width: 56.25em) {
@@ -583,7 +584,8 @@ input[type='submit']:hover {
   margin-top: -1.5rem;
   padding-top: -2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #e6e5e5;
+  border: 1px solid #ebeaea;
+  box-shadow: 2px 1px 2px #adadad;
   width: 94%;
   margin: 0 auto;
 }
@@ -605,4 +607,11 @@ input[type='submit']:hover {
 
 .summary__total {
   font-weight: bold;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: white;
 }
