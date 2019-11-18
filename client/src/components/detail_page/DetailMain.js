@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import AddForm from './AddForm';
+import CardDetailSummary from './CardDetailSummary';
 
-class AddMain extends Component {
+class DetailMain extends Component {
   /* connect to database goes here -- watch lesson 18 */
   /*state = {
     users: [],
@@ -25,10 +26,11 @@ class AddMain extends Component {
   render() {
     return (
       <Fragment>
-        <AddForm searchIncome={this.searchIncome} />
+        <AddForm title={'Income'} />
+        <CardDetailSummary title={'Income Summary'} />
       </Fragment>
     );
   }
 }
 
-export default AddMain;
+export default DetailMain;

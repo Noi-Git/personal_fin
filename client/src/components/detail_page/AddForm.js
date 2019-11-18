@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
-const AddForm = () => {
+const AddForm = props => {
   const [formData, setFormData] = useState({
     name: '',
     amount: ''
@@ -39,7 +39,7 @@ const AddForm = () => {
     <Fragment>
       <div className="details__body">
         <div className="input">
-          <p className="input__title">Income</p>
+          <p className="input__title">{props.title}</p>
 
           <form className="input__detail" onSubmit={e => onSubmit(e)}>
             <div className="input__detail--name">

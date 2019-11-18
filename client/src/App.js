@@ -7,7 +7,7 @@ import Info from './components/layout/Info';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Totals from './components/main_page/Totals';
-import AddMain from './components/detail_page/AddMain';
+import DetailMain from './components/detail_page/DetailMain';
 
 import './App.css';
 
@@ -17,7 +17,7 @@ const App = () => (
       <Navbar
         i_home="fa fa-home"
         i_info="fa fa-info"
-        i_signout="fa fa-sign-out"
+        i_signout="fa fa-sign-in"
       />
       <Route exact path="/" component={Landing} />
       <Route exact path="/register" component={Register} />
@@ -25,7 +25,7 @@ const App = () => (
       <Route exact path="/info" component={Info} />
 
       <Route exact path="/main_page" component={Totals} />
-      <Route exact path="/detail_page" component={AddMain} />
+      <Route exact path="/detail_page" component={DetailMain} />
     </Fragment>
   </Router>
 );
