@@ -31,27 +31,30 @@ class Testing extends Component {
       <Fragment>
         <h2>Landing</h2>
 
-        <ul>
-          {this.state.datas.map(
-            data => 
-              <li key={data.user_id}>Total income: {data.total_income} </li>
-              <li key={data.id1}>Total income: {data.total_expense}</li>
-            
-            // <li key={data.id}>Total income: {data.total_reserve}</li>
+        {this.state.datas
+          .map
+          //     data =>
+          //       <li key={data.user_id}>Total income: {data.total_income} </li>
+          //       <li key={data.id1}>Total income: {data.total_expense}</li>
 
-            //   <li>Amount: ${data.income}</li>
-            //   <li>
-            //   Daily amount: $
-            //   {(data.amount / toTheEndOfTheMonth).toFixed(2)}
-            //   </li>
-            //   <li>Type: {data.type}</li>
+          // <li key={data.id}>Total income: {data.total_reserve}</li>
 
-            // <li>============================</li>
-            // <li>This month has {totalDaysInMonth} days</li>
-            // <li>Today date {todayDate} </li>
-            // <li>Total day left in this month {toTheEndOfTheMonth} days</li>
-          )}
-        </ul>
+          //   <li>Amount: ${data.income}</li>
+          //   <li>
+          //   Daily amount: $
+          //   {(data.amount / toTheEndOfTheMonth).toFixed(2)}
+          //   </li>
+          //   <li>Type: {data.type}</li>
+
+          // <li>============================</li>
+          // <li>This month has {totalDaysInMonth} days</li>
+          // <li>Today date {todayDate} </li>
+          // <li>Total day left in this month {toTheEndOfTheMonth} days</li>
+
+          // <Link to="/login">
+          //   <i className={this.props.i_signin} aria-hidden="true"></i>
+          // </Link>
+          ()}
       </Fragment>
     );
   }
