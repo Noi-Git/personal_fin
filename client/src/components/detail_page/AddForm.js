@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import axios from 'axios';
 
 const AddForm = () => {
   const [formData, setFormData] = useState({
@@ -12,8 +13,26 @@ const AddForm = () => {
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
+    const newIncome = {
+      name,
+      amount
+    };
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      };
+
+      const body = JSON.stringify(newIncome);
+
+      const res = await axios.post('/api/income', body, config);
+      console.log(res.data);
+    } catch (err) {
+      console.log(err.response.data);
+    }
   };
 
   return (
