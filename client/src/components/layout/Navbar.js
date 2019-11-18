@@ -21,7 +21,15 @@ const Navbar = props => {
           </Link>
           <div>
             {!isAuthenticated && (
-              <button onClick={() => loginWithRedirect({})}>Log in</button>
+              <button
+                onClick={() =>
+                  loginWithRedirect({
+                    redirect_uri: 'http://localhost:3000/profile'
+                  })
+                }
+              >
+                Log in
+              </button>
             )}
 
             {isAuthenticated && (

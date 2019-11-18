@@ -11,6 +11,7 @@ import DetailMain from './components/detail_page/DetailMain';
 
 import { useAuth0 } from './react-auth0-spa';
 import Profile from './components/Profile';
+import PrivateRoute from './components/PrivateRoute';
 
 import './App.css';
 
@@ -30,17 +31,15 @@ const App = () => {
         />
 
         <Switch>
-          <Route path="/" exact />
-          <Route path="/profile" component={Profile} />
+          <Route exact path="/" component={Landing} />
+          <PrivateRoute exact path="/profile" component={Profile} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/info" component={Info} />
+          <Route exact path="/main_page" component={Totals} />
+          <Route exact path="/detail_page" component={DetailMain} />
+          {/* <Route path="/" component={NotFound} /> */}
         </Switch>
-
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/info" component={Info} />
-
-        <Route exact path="/main_page" component={Totals} />
-        <Route exact path="/detail_page" component={DetailMain} />
       </Fragment>
     </Router>
   );
