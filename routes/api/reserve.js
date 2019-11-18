@@ -7,7 +7,7 @@ const pool = require('../../db/index');
 // @route   GET routes/api/reserve
 // @desc    Get user reserve_fund infomation
 // @access  Private
-router.get('/get/reserve', async (req, res) => {
+router.get('/reserve', async (req, res) => {
   try {
     const reserve_q = `
     SELECT rese.*, total_reserve
@@ -40,7 +40,7 @@ router.get('/get/reserve', async (req, res) => {
 // @route   POST routes/api/reserve
 // @desc    Post user reserve infomation
 // @access  Private
-router.post('/post/reserve', async (req, res) => {
+router.post('/reserve', async (req, res) => {
   const { user_id, r_name, r_amount } = req.body;
   try {
     const reserve_q = `
@@ -67,7 +67,7 @@ VALUES(${user_id}, '${r_name}', ${r_amount}, current_timestamp) RETURNING *`;
 // @route   PUT routes/api/reserve
 // @desc    Update user reserve infomation
 // @access  Private
-router.put('/put/reserve', async (req, res) => {
+router.put('/reserve', async (req, res) => {
   const { user_id, id, r_name, r_amount } = req.body;
   try {
     // update reserve and name of user_id: 'x' and id: 'y'
@@ -112,7 +112,7 @@ router.put('/put/reserve', async (req, res) => {
 // @route   DELETE routes/api/reserve
 // @desc    Delete user reserve infomation
 // @access  Private
-router.delete('/delete/reserve', async (req, res) => {
+router.delete('/reserve', async (req, res) => {
   const { id } = req.body;
   try {
     const delete_reserve_q = `DELETE FROM reserve_fund WHERE id=$1`;
