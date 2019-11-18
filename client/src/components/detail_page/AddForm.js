@@ -15,24 +15,24 @@ const AddForm = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    const newIncome = {
-      name,
-      amount
-    };
-    try {
-      const config = {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      };
+    // const newIncome = {
+    //   name,
+    //   amount
+    // };
+    // try {
+    //   const config = {
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     }
+    //   };
 
-      const body = JSON.stringify(newIncome);
+    //   const body = JSON.stringify(newIncome);
 
-      const res = await axios.post('/api/income', body, config);
-      console.log(res.data);
-    } catch (err) {
-      console.log(err.response.data);
-    }
+    // const res = await axios.post('/api/income', body, config);
+    // console.log(res.data);
+    // } catch (err) {
+    // console.log(err.response.data);
+    // }
   };
 
   return (

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import { useAuth0 } from '../react-auth0-spa';
 
 class Navbar extends Component {
   static defaultProps = {
