@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import AddForm from './AddForm';
 import CardDetailSummary from './CardDetailSummary';
+import DetailInfo from './DetailInfo';
 
 class DetailMain extends Component {
   /* connect to database goes here -- watch lesson 18 */
@@ -27,7 +28,12 @@ class DetailMain extends Component {
     return (
       <Fragment>
         <AddForm title={'Income'} />
-        <CardDetailSummary title={'Income Summary'} />
+        <CardDetailSummary title={'Income Summary'}>
+          <DetailInfo title="work at place 1" amount="400" />
+          <DetailInfo title="work at ABC company" amount="80" />
+          <DetailInfo title="work at company at home" amount="1200" />
+          <DetailInfo title="work alone" amount="12000" />
+        </CardDetailSummary>
       </Fragment>
     );
   }

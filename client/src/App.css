@@ -555,7 +555,7 @@ input[type='submit']:hover {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   width: 94%;
-  margin: 4rem auto 0 auto;
+  margin: 4rem auto;
   padding: 2rem 0;
   box-shadow: 1px 1px 2px #adadad;
   border-radius: 0.5rem;
@@ -590,9 +590,19 @@ input[type='submit']:hover {
 .summary__details {
   font-size: 1.4rem;
   padding: 1rem 0.7rem;
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
 }
+
+/* .summary__details--amount {
+  float: right;
+} */
+
+.go-right {
+  /* padding-left: 60%; */
+  float: right;
+}
+
 .summary__total {
   font-weight: bold;
 }

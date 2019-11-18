@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 
-const DetailInfo = () => {
+const DetailInfo = props => {
   return (
     <Fragment>
       <div className="summary__details">
-        <p className="summary__details--name">Work at place 1</p>
-        <p className="summary__details--amount">
-          <span className="detail__dollar">$ </span>400
+        <p className="summary__details--name">
+          {props.title}
+          <span className="go-right">{props.amount}</span>
+          <span className="go-right">$</span>
         </p>
       </div>
     </Fragment>
