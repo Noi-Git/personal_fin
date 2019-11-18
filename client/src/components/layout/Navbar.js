@@ -19,31 +19,32 @@ const Navbar = props => {
           <Link to="/info">
             <i className={props.i_info} aria-hidden="true"></i>
           </Link>
-          <div>
-            {!isAuthenticated && (
-              <button
-                onClick={() =>
-                  loginWithRedirect({
-                    redirect_uri: 'http://localhost:3000/profile'
-                  })
-                }
-              >
-                Log in
-              </button>
-            )}
 
-            {isAuthenticated && (
-              <button onClick={() => logout()}>Log out</button>
-            )}
+          {!isAuthenticated && (
+            <button
+              onClick={() =>
+                loginWithRedirect({
+                  redirect_uri: 'http://localhost:3000/main_page'
+                })
+              }
+            >
+              <i className="fa fa-sign-in" aria-hidden="true"></i>
+            </button>
+          )}
 
-            {/* NEW - add a link to the home and profile pages */}
-            {isAuthenticated && (
-              <span>
-                <Link to="/">Home</Link>&nbsp;
-                <Link to="/profile">Profile</Link>
-              </span>
-            )}
-          </div>
+          {isAuthenticated && (
+            <Link to="/profile">
+              <i className={props.i_user} aria-hidden="true"></i>
+            </Link>
+          )}
+
+          {isAuthenticated && (
+            <button onClick={() => logout()}>
+              <i className="fa fa-sign-out" aria-hidden="true"></i>
+            </button>
+          )}
+
+          {/* NEW - add a link to the home and profile pages */}
         </div>
 
         <div className="nav__navbar">
