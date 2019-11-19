@@ -22,6 +22,7 @@ const onRedirectCallback = appState => {
   );
 };
 
+// create redux store
 let store = createStore(rootReducer);
 
 ReactDOM.render(

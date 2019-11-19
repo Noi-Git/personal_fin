@@ -11,6 +11,8 @@ import { useAuth0 } from './react-auth0-spa';
 import Profile from './components/Profile';
 import PrivateRoute from './components/PrivateRoute';
 
+import Component1 from './functional/component1';
+
 import './App.css';
 
 const App = () => {
@@ -38,6 +40,7 @@ const App = () => {
           <PrivateRoute exact path="/detail_page" component={DetailMain} />
           {/* <Route path="/" component={NotFound} /> */}
         </Switch>
+        <Component1 name="Noi" />
       </Fragment>
     </Router>
   );
