@@ -1,2 +1,4 @@
-export const SET_DB_PROFILE = 'SET_DB_PROFILE';
-export const REMOVE_PROFILE = 'REMOVE_PROFILE';
+// create variables
+
+export const SUCCESS = 'SUCCESS';
+export const FAILURE = 'FAILURE';
