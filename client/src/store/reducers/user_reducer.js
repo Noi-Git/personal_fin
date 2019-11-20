@@ -1,14 +1,10 @@
-// import action_types from action_types.js
 import * as ACTION_TYPES from '../actions/action_types';
 
-// setup variables -- no need to export
-// these files will only be use in here
 const initialState = {
-  stateprop1: false,
-  user_text: ''
+  stateprop1: false
 };
 
-const rootReducer = (state = initialState, action) => {
+const Reducer1 = (state = initialState, action) => {
   //use switch...cass to check if this happen run this
   switch (
     action.type // 1. check the action.type
@@ -23,11 +19,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         stateprop1: false
       };
-    case ACTION_TYPES.USER_INPUT:
-      return {
-        ...state,
-        user_text: action.payload
-      };
     default:
       return {
         state
@@ -35,4 +26,4 @@ const rootReducer = (state = initialState, action) => {
   }
 };
 
-export default rootReducer;
+export default Reducer1;
