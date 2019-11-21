@@ -1,9 +1,37 @@
 const express = require('express');
+const jwt = require('express-jwt');
+const jwksRsa = require('jwks-rsa');
 // validate - search more info at express-validator
 
 const app = express();
 
-// Connect Database
+// Set up Auth0 configuration
+const authConfig = {
+  domain: 'DOMAIN',
+  audience: 'API_IDENTIFIER'
+};
+
+// Define middleware that validates incoming bearer tokens
+// using JWKS from dev--gak610i.auth0.com
+const checkJwt = jwt({
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://${authConfig.domain}/.well-known/jwks.json`
+  }),
+
+  audience: authConfig.audience,
+  issuer: `https://${authConfig.domain}/`,
+  algorithm: ['RS256']
+});
+
+// Define an endpoint that must be called with an access token
+app.get('/api/external', checkJwt, (req, res) => {
+  res.send({
+    msg: 'Your Access Token was successfully validated!'
+  });
+});
 
 // Init Middleware - used to be bodyParser.json() - now do the below
 // it helps us get data from users.js when we do - req.body
