@@ -10,6 +10,7 @@ import DetailMain from './components/detail_page/DetailMain';
 import { useAuth0 } from './react-auth0-spa';
 import Profile from './components/Profile';
 import PrivateRoute from './components/PrivateRoute';
+import ExternalApi from './views/ExternalApi';
 
 import './App.css';
 
@@ -37,6 +38,7 @@ const App = () => {
           <PrivateRoute exact path="/main_page" component={Totals} />
           <PrivateRoute exact path="/detail_page" component={DetailMain} />
           {/* <Route path="/" component={NotFound} /> */}
+          <PrivateRoute path="/external-api" component={ExternalApi} />
         </Switch>
       </Fragment>
     </Router>

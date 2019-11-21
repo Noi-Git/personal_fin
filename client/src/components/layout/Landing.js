@@ -15,7 +15,7 @@ class Login extends Component {
             <Link to="/login">Login</Link>
           </div>
           <div className="login--button">
-            <Link to="/register">Register</Link>
+            <Link to="/external-api">External API</Link>
           </div>
 
           <div className="header__info">More info</div>
