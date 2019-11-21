@@ -33,7 +33,29 @@ router.get('/user', async (req, res) => {
 // @route   POST routes/api/user
 // @desc    Add user infomation to the database
 // @access  Private
-router.post('/user', (req, res) => {
-  console.log(req.body); // need to initualize the middleware for req.body to work
-  res.send('User route');
-});
+router.post(
+  '/user',
+  [
+    check('username')
+      .not()
+      .isEmpty(),
+    check(email)
+      .exists()
+      .isEmail()
+  ],
+  (req, res) => {
+    console.log(req.body); // need to initualize the middleware for req.body to work
+    const error = validationResult(req);
+    if (!error.isEmpty()) {
+      res.redirect('http://localhost3000/main_page');
+      //if there is an error - do the following
+    } else {
+      const adduser_q = `INSERT INTO users(username, email VALUES${username}, ${email}) RETURNING *`;
+      console.log(adduser_q);
+      // const adduser_result = await pool.query(adduser_q)
+      // res.json(adduser_result.rows);
+      res.redirect('http://localhost3000/main_page');
+    }
+    res.send('User route');
+  }
+);
