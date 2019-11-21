@@ -34,7 +34,11 @@ class Totals extends Component {
     return (
       <Fragment>
         <Display
-          daily_amount={this.state.total_income - this.state.total_expense}
+          daily_amount={
+            this.state.total_income -
+            this.state.total_expense -
+            this.state.total_reserve
+          }
           display_title="Today's Budget"
         />
         <CardSummary title="Summary">
