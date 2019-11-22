@@ -29,11 +29,11 @@ class Totals extends Component {
   constructor() {
     super();
     this.state = {
-      loading: false,
-      user_id: 7,
-      total_income: 1520.25,
-      total_expense: 888.75,
-      total_reserve: 380.25
+      loading: false
+      // user_id: 7,
+      // total_income: 1520.25,
+      // total_expense: 888.75,
+      // total_reserve: 380.25
     };
   }
 
@@ -41,7 +41,6 @@ class Totals extends Component {
     this.setState({ loading: true });
 
     const userFromAuth0 = this.context.user;
-    console.log('userFromAuth0', userFromAuth0);
 
     const res = await axios({
       url: 'http://localhost:5000/user',
@@ -52,10 +51,19 @@ class Totals extends Component {
         sub: userFromAuth0.sub
       }
     });
-    const userFromBackend = res.data.user;
-    console.log('userFromBackend', userFromBackend);
 
-    this.setState({ users: res.data, loading: false });
+    const userFromBackend = res.data.user;
+    const budgetFromBackend = res.data.budget;
+    console.log('userFromBackend', userFromBackend);
+    console.log('budgetFromBackend:', budgetFromBackend);
+
+    this.setState({
+      loading: false,
+      user_id: userFromBackend.id,
+      total_income: budgetFromBackend.total_income,
+      total_expense: budgetFromBackend.total_expense,
+      total_reserve: budgetFromBackend.total_reserve
+    });
   }
 
   render() {

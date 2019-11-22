@@ -52,7 +52,6 @@ router.post(
       .isEmpty()
   ],
   async (req, res) => {
-    console.log('@@@@@');
     // console.log(req.body); // need to initualize the middleware for req.body to work
 
     // data sent from frontend not complete
@@ -63,8 +62,7 @@ router.post(
     // }
 
     // get query and sub from http request
-    const { email, sub } = req.body;
-    console.log('POST /user :', email, sub);
+    const { username, email, sub } = req.body;
 
     // check if user has existed in the db
     let userFound = await pool.query(
@@ -75,18 +73,11 @@ router.post(
     // if user was not found in the db
     if (!userFound || userFound.rows.length === 0) {
       // create a new user
-      await pool.query(
-        `INSERT INTO users(username, email VALUES${username}, ${email}) RETURNING *`
-      );
-
-      // get the newly create user, because i want the id
       userFound = await pool.query(
-        'SELECT * FROM users WHERE email=$1 AND sub=$2',
-        [email, sub]
+        'INSERT INTO users(username, email, sub) VALUES ($1, $2, $3) RETURNING *',
+        [username, email, sub]
       );
-      console.log(userFound);
 
-      // send the whole user info to frontend
       return res.json({ message: 'save a new user', user: userFound.rows[0] });
     }
 
@@ -117,12 +108,12 @@ router.post(
     
     ORDER BY inco.user_id ASC`;
 
-    const total_result = await pool.query(total_q, [userFound.rows[0].id]); // return from query
+    const budgetQueryResult = await pool.query(total_q, [userFound.rows[0].id]); // return from query
 
     return res.json({
       message: 'existing user',
       user: userFound.rows[0],
-      money: total_result.rows
+      budget: budgetQueryResult.rows[0]
     });
   }
 );
