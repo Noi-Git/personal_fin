@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import axios from 'axios';
 
-const AddForm = props => {
+const IncomeAddForm = props => {
   const [formData, setFormData] = useState({
     name: '',
     amount: ''
@@ -101,4 +101,4 @@ const AddForm = props => {
   );
 };
 
-export default AddForm;
+export default IncomeAddForm;

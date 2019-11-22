@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import axios from 'axios';
 
-const ExpenseAddForm = props => {
+const ReserveIncomeAddForm = props => {
   const [formData, setFormData] = useState({
     name: '',
     amount: ''
@@ -52,9 +52,9 @@ const ExpenseAddForm = props => {
         }
       };
 
-      const body = JSON.stringify(newExpense);
+      const body = JSON.stringify(newReserve);
 
-      const res = await axios.post('/api/expense', body, config);
+      const res = await axios.post('/api/reserve', body, config);
       console.log(res.data);
     } catch (err) {
       console.log(err.response.data);
@@ -69,7 +69,7 @@ const ExpenseAddForm = props => {
 
           <form className="input__detail" onSubmit={e => onSubmit(e)}>
             <div className="input__detail--name">
-              <label>Name of Expense</label>
+              <label>Name of Reserve Fund</label>
               <input
                 className="input-style"
                 type="text"
@@ -101,4 +101,4 @@ const ExpenseAddForm = props => {
   );
 };
 
-export default ExpenseAddForm;
+export default ReserveIncomeAddForm;

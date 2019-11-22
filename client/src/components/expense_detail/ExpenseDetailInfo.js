@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-const DetailInfo = props => {
+const ExpenseDetailInfo = props => {
   return (
     <Fragment>
       <div className="summary__details">
@@ -14,4 +14,4 @@ const DetailInfo = props => {
   );
 };
 
-export default DetailInfo;
+export default ExpenseDetailInfo;

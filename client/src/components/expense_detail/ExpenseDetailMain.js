@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import AddForm from './AddForm';
-import CardDetailSummary from './CardDetailSummary';
-import DetailInfo from './DetailInfo';
+import ExpenseAddForm from './AddForm';
+import ExpenseCardDetailSummary from './CardDetailSummary';
+import ExpenseDetailInfo from './DetailInfo';
 
-class DetailMain extends Component {
+class ExpenseDetailMain extends Component {
   /* connect to database goes here -- watch lesson 18 */
   /*state = {
     users: [],
@@ -27,16 +27,18 @@ class DetailMain extends Component {
   render() {
     return (
       <Fragment>
-        <AddForm title={'Income'} />
-        <CardDetailSummary title={'Income Summary'}>
-          <DetailInfo title="work at place 1" amount="400" />
-          <DetailInfo title="work at ABC company" amount="80" />
-          <DetailInfo title="work at company at home" amount="1200" />
-          <DetailInfo title="work alone" amount="12000" />
-        </CardDetailSummary>
+        <ExpenseAddForm title={'Expense'} />
+        <ExpenseCardDetailSummary title={'Expense Summary'}>
+          <ExpenseDetailInfo title="grocery" amount="70" />
+          <ExpenseDetailInfo title="lunch" amount="12" />
+          <ExpenseDetailInfo title="dinner" amount="20" />
+          <ExpenseDetailInfo title="bart" amount="50" />
+          <ExpenseDetailInfo title="grocery" amount="35" />
+          <ExpenseDetailInfo title="dinner" amount="17" />
+        </ExpenseCardDetailSummary>
       </Fragment>
     );
   }
 }
 
-export default DetailMain;
+export default ExpenseDetailMain;

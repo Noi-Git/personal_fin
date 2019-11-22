@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import IncomeAddForm from './AddForm';
-import IncomeCardDetailSummary from './CardDetailSummary';
-import IncomeDetailInfo from './DetailInfo';
+import AddForm from './AddForm';
+import ReserveCardDetailSummary from './ReserveCardDetailSummary';
+import ReserveDetailInfo from './ReserveDetailInfo';
 
 class IncomeDetailMain extends Component {
   /* connect to database goes here -- watch lesson 18 */
@@ -27,13 +27,12 @@ class IncomeDetailMain extends Component {
   render() {
     return (
       <Fragment>
-        <IncomeAddForm title={'Income'} />
-        <IncomeCardDetailSummary title={'Income Summary'}>
-          <IncomeDetailInfo title="work at place 1" amount="400" />
-          <IncomeDetailInfo title="work at ABC company" amount="80" />
-          <IncomeDetailInfo title="work at company at home" amount="1200" />
-          <IncomeDetailInfo title="work alone" amount="12000" />
-        </IncomeCardDetailSummary>
+        <AddForm title={'Income'} />
+        <ReserveCardDetailSummary title={'Income Summary'}>
+          <ReserveDetailInfo title="sister's birthday" amount="100" />
+          <ReserveDetailInfo title="rent" amount="400" />
+          <ReserveDetailInfo title="car payment" amount="200" />
+        </ReserveCardDetailSummary>
       </Fragment>
     );
   }
