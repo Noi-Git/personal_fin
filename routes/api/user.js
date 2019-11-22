@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { check, validationResult } = require('express-validator/check');
+
+const pool = require('../../db/index');
+
+const { check, validationResult } = require('express-validator');
 
 // Init Middleware is in server.js
 
@@ -8,28 +11,28 @@ const { check, validationResult } = require('express-validator/check');
 // @route   GET routes/api/user
 // @desc    Get userinfomation
 // @access  Private
-router.get('/user', async (req, res) => {
-  try {
-    const user_q = `SELECT * FROM users WHERE email=$1 AND sub=$2`,
-    [email, sub];
-    console.log(user_q)
+// router.get('/user', async (req, res) => {
+//   try {
+//     const user_q = `SELECT * FROM users WHERE email=$1 AND sub=$2`,
+//     [email, sub];
+//     console.log(user_q)
 
-    const user_result = await pool.query(user_q); // return from query
-    // console.log(user_result.rows);
+//     const user_result = await pool.query(user_q); // return from query
+//     // console.log(user_result.rows);
 
-    if (!user_result) {
-      return res
-        .status(400)
-        .json({ msg: `We don't have information about the user` });
-    } else {
-      res.json(user_result.rows);
-    }
-    // response.json(info);
-  } catch (err) {
-    console.log(err.message);
-    res.status(500).send('Server Error');
-  }
-});
+//     if (!user_result) {
+//       return res
+//         .status(400)
+//         .json({ msg: `We don't have information about the user` });
+//     } else {
+//       res.json(user_result.rows);
+//     }
+//     // response.json(info);
+//   } catch (err) {
+//     console.log(err.message);
+//     res.status(500).send('Server Error');
+//   }
+// });
 
 /* ===== POST USER ===== */
 // @route   POST routes/api/user
@@ -49,15 +52,19 @@ router.post(
       .isEmpty()
   ],
   async (req, res) => {
+    console.log('@@@@@');
     // console.log(req.body); // need to initualize the middleware for req.body to work
 
     // data sent from frontend not complete
-    const error = validationResult(req);
-    if (error.isEmpty()) {
-      return res.json({ message: 'Some data are missing' });
-    }
+    // const error = validationResult(req);
+    // console.log(error);
+    // if (error.isEmpty()) {
+    //   return res.json({ message: 'Some data are missing' });
+    // }
+
     // get query and sub from http request
     const { email, sub } = req.body;
+    console.log('POST /user :', email, sub);
 
     // check if user has existed in the db
     let userFound = await pool.query(
@@ -119,3 +126,5 @@ router.post(
     });
   }
 );
+
+module.exports = router;

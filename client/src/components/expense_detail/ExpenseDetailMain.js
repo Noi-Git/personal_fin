@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import ExpenseAddForm from './AddForm';
-import ExpenseCardDetailSummary from './CardDetailSummary';
-import ExpenseDetailInfo from './DetailInfo';
+import ExpenseAddForm from './ExpenseAddForm';
+import ExpenseCardDetailSummary from './ExpenseCardDetailSummary';
+import ExpenseDetailInfo from './ExpenseDetailInfo';
 
 class ExpenseDetailMain extends Component {
   /* connect to database goes here -- watch lesson 18 */

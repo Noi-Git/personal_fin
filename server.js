@@ -2,9 +2,14 @@ const express = require('express');
 const jwt = require('express-jwt');
 const jwksRsa = require('jwks-rsa');
 const path = require('path');
+const cors = require('cors');
 // validate - search more info at express-validator
 
 const app = express();
+// Init Middleware - used to be bodyParser.json() - now do the below
+// it helps us get data from users.js when we do - req.body
+app.use(express.json({ extended: false }));
+app.use(cors());
 
 // Set up Auth0 configuration
 const authConfig = {
@@ -34,10 +39,6 @@ app.get('/api/external', checkJwt, (req, res) => {
   });
 });
 
-// Init Middleware - used to be bodyParser.json() - now do the below
-// it helps us get data from users.js when we do - req.body
-app.use(express.json({ extended: false }));
-
 /* ==== make sure to get rid of app.get('/', (req, res) => res.send('API Running')) === */
 app.get('/', (req, res) => res.send('API Running'));
 
@@ -46,6 +47,7 @@ app.use('/', require('./routes/api/total'));
 app.use('/', require('./routes/api/income'));
 app.use('/', require('./routes/api/expense'));
 app.use('/', require('./routes/api/reserve'));
+app.use('/', require('./routes/api/user'));
 
 // Serve static assets in production
 if (process.env.NODE.ENV == 'production') {

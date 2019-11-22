@@ -41,7 +41,7 @@ const ExpenseAddForm = props => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    const newIncome = {
+    const newExpense = {
       name,
       amount
     };

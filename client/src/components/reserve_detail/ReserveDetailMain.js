@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import AddForm from './AddForm';
+import AddForm from './ReserveAddForm';
 import ReserveCardDetailSummary from './ReserveCardDetailSummary';
 import ReserveDetailInfo from './ReserveDetailInfo';
 
@@ -27,8 +27,8 @@ class IncomeDetailMain extends Component {
   render() {
     return (
       <Fragment>
-        <AddForm title={'Income'} />
-        <ReserveCardDetailSummary title={'Income Summary'}>
+        <AddForm title={'Reserve Fund'} />
+        <ReserveCardDetailSummary title={'Reserve Fund Summary'}>
           <ReserveDetailInfo title="sister's birthday" amount="100" />
           <ReserveDetailInfo title="rent" amount="400" />
           <ReserveDetailInfo title="car payment" amount="200" />

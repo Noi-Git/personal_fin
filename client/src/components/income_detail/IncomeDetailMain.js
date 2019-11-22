@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import IncomeAddForm from './AddForm';
-import IncomeCardDetailSummary from './CardDetailSummary';
-import IncomeDetailInfo from './DetailInfo';
+import IncomeAddForm from './IncomeAddForm';
+import IncomeCardDetailSummary from './IncomeCardDetailSummary';
+import IncomeDetailInfo from './IncomeDetailInfo';
 
 class IncomeDetailMain extends Component {
   /* connect to database goes here -- watch lesson 18 */

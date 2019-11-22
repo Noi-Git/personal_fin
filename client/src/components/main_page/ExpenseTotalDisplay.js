@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import AddIncomeButton from '../detail_page/AddIncomeButton';
+import AddExpenseButton from '../expense_detail/AddExpenseButton';
 
-const TotalDisplay = props => {
+const ExpenseTotalDisplay = props => {
   return (
     <Fragment>
       <div>
@@ -9,10 +9,10 @@ const TotalDisplay = props => {
           <span className="dollar-small">$</span> {props.total_amount}
         </p>
         <p className="main__balance--text">{props.total_type}</p>
-        <AddIncomeButton />
+        <AddExpenseButton />
       </div>
     </Fragment>
   );
 };
 
-export default TotalDisplay;
+export default ExpenseTotalDisplay;

@@ -6,6 +6,9 @@ import Navbar from './components/layout/Navbar';
 // import Info from './components/layout/Info';
 import Totals from './components/main_page/Totals';
 import DetailMain from './components/detail_page/DetailMain';
+import IncomeDetailMain from './components/income_detail/IncomeDetailMain';
+import ExpenseDetailMain from './components/expense_detail/ExpenseDetailMain';
+import ReserveDetailMain from './components/reserve_detail/ReserveDetailMain';
 
 import { useAuth0 } from './react-auth0-spa';
 import Profile from './components/Profile';
@@ -37,6 +40,21 @@ const App = () => {
           {/*<Route exact path="/info" component={Info} />*/}
           <PrivateRoute exact path="/main_page" component={Totals} />
           <PrivateRoute exact path="/detail_page" component={DetailMain} />
+          <PrivateRoute
+            exact
+            path="/income_detail"
+            component={IncomeDetailMain}
+          />
+          <PrivateRoute
+            exact
+            path="/expense_detail"
+            component={ExpenseDetailMain}
+          />
+          <PrivateRoute
+            exact
+            path="/reserve_detail"
+            component={ReserveDetailMain}
+          />
           {/* <Route path="/" component={NotFound} /> */}
           {/*<PrivateRoute path="/external-api" component={ExternalApi} />*/}
         </Switch>

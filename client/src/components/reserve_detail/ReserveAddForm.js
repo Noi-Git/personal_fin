@@ -41,7 +41,7 @@ const ReserveIncomeAddForm = props => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    const newIncome = {
+    const newReserve = {
       name,
       amount
     };

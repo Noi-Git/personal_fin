@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import AddIncomeButton from '../detail_page/AddIncomeButton';
 
-const TotalDisplay = props => {
+const IncomeTotalDisplay = props => {
   return (
     <Fragment>
       <div>
@@ -15,4 +15,4 @@ const TotalDisplay = props => {
   );
 };
 
-export default TotalDisplay;
+export default IncomeTotalDisplay;
