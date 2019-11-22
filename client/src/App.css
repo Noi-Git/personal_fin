@@ -615,3 +615,31 @@ a:hover,
 a:active {
   color: white;
 }
+
+.summary--title {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  width: 94%;
+  margin: 2rem auto 0 auto;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+}
+@media (min-width: 37.5em) {
+  .summary {
+    width: 76%;
+    margin: 10rem auto 0 auto;
+  }
+}
+@media (min-width: 56.25em) {
+  .summary {
+    width: 70%;
+  }
+}
+@media (min-width: 75em) {
+  .summary {
+    width: 60%;
+    margin: 2rem auto 0 auto;
+  }
+}
