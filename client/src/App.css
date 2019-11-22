@@ -406,10 +406,14 @@ select {
 }
 
 .login--button {
-  width: 100%;
+  width: 50%;
   margin: 0 auto;
+  font-size: 1.7rem;
+  padding: 0.7rem 0;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
+  color: #ffffff;
 }
 @media (min-width: 37.5em) {
   .login--button {
@@ -418,7 +422,8 @@ select {
 }
 @media (min-width: 75em) {
   .login--button {
-    width: 35%;
+    background-color: #16a085;
+    width: 15%;
   }
 }
 
