@@ -79,7 +79,7 @@ body {
 }
 @media (min-width: 37.5em) {
   .nav__info {
-    border-bottom: 0.3px solid #e94514;
+    /* border-bottom: 0.3px solid #e94514; */
   }
 }
 @media (min-width: 56.25em) {
@@ -413,11 +413,17 @@ select {
   border-radius: 5px;
   display: flex;
   justify-content: center;
+  background-color: #16a085;
   color: #ffffff;
 }
 @media (min-width: 37.5em) {
   .login--button {
-    width: 50%;
+    width: 30%;
+  }
+}
+@media (min-width: 56.25em) {
+  .login--button {
+    width: 20%;
   }
 }
 @media (min-width: 75em) {
@@ -484,7 +490,7 @@ input[type='submit']:hover {
 }
 @media (min-width: 37.5em) {
   .details__body {
-    grid-template-rows: 26vh;
+    grid-template-rows: 24vh;
   }
 }
 @media (min-width: 56.25em) {
@@ -494,7 +500,7 @@ input[type='submit']:hover {
 }
 @media (min-width: 75em) {
   .details__body {
-    grid-template-rows: 26vh;
+    grid-template-rows: 36vh;
   }
 }
 
@@ -518,6 +524,7 @@ input[type='submit']:hover {
   font-size: 1.7rem;
   text-align: center;
   padding-bottom: 3rem;
+  padding-top: 1.5rem;
 }
 @media (min-width: 37.5em) {
   .input__title {
@@ -532,6 +539,7 @@ input[type='submit']:hover {
 @media (min-width: 75em) {
   .input__title {
     font-size: 2.5rem;
+    padding-top: 2.5rem;
   }
 }
 
@@ -644,6 +652,34 @@ a:active {
 }
 @media (min-width: 75em) {
   .summary {
+    width: 60%;
+    margin: 2rem auto 0 auto;
+  }
+}
+
+/* === USER PROFILE ===*/
+.user {
+  display: flex;
+  align-content: center;
+}
+.user--img {
+  width: 30%;
+  border-radius: 50%;
+  margin-top: 2rem;
+}
+@media (min-width: 37.5em) {
+  .user--img {
+    width: 76%;
+    margin: 10rem auto 0 auto;
+  }
+}
+@media (min-width: 56.25em) {
+  .user--img {
+    width: 70%;
+  }
+}
+@media (min-width: 75em) {
+  .user--img {
     width: 60%;
     margin: 2rem auto 0 auto;
   }

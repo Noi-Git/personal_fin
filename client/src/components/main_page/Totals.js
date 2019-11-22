@@ -51,7 +51,7 @@ class Totals extends Component {
         sub: userFromAuth0.sub
       }
     });
-
+    console.log(res.data);
     const userFromBackend = res.data.user;
     const budgetFromBackend = res.data.budget;
     console.log('userFromBackend', userFromBackend);
