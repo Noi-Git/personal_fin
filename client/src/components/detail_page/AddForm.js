@@ -13,6 +13,32 @@ const AddForm = props => {
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  // const onSubmit = async e => {
+  //   e.priventDefault();
+  //   if (name.lenght === 0 || amount.length === 0) {
+  //     console.log('Please make sure you fill all infomation');
+  //   } else {
+  //     const newData = {
+  //       i_name,
+  //       i_amount
+  //     };
+
+  //     try {
+  //       const config = {
+  //         headers: {
+  //           'Content-Type': 'application/json'
+  //         }
+  //       };
+
+  //       const body = JSON.stringify(newData);
+  //       const res = axios.post('/api/users', body, config);
+  //       console.log(res.data);
+  //     } catch (err) {
+  //       console.error(err.response.data);
+  //     }
+  //   }
+  // };
+
   const onSubmit = async e => {
     e.preventDefault();
     const newIncome = {

@@ -10,7 +10,9 @@ const { check, validationResult } = require('express-validator/check');
 // @access  Private
 router.get('/user', async (req, res) => {
   try {
-    const user_q = `SELECT * FROM users`;
+    const user_q = `SELECT * FROM users WHERE email=$1 AND sub=$2`,
+    [email, sub];
+    console.log(user_q)
 
     const user_result = await pool.query(user_q); // return from query
     // console.log(user_result.rows);
