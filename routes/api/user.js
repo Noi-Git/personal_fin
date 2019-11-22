@@ -39,23 +39,81 @@ router.post(
     check('username')
       .not()
       .isEmpty(),
-    check(email)
+    check('email')
       .exists()
-      .isEmail()
+      .isEmail(),
+    check('sub')
+      .not()
+      .isEmpty()
   ],
-  (req, res) => {
-    console.log(req.body); // need to initualize the middleware for req.body to work
+  async (req, res) => {
+    // console.log(req.body); // need to initualize the middleware for req.body to work
+
+    // data sent from frontend not complete
     const error = validationResult(req);
-    if (!error.isEmpty()) {
-      res.redirect('http://localhost3000/main_page');
-      //if there is an error - do the following
-    } else {
-      const adduser_q = `INSERT INTO users(username, email VALUES${username}, ${email}) RETURNING *`;
-      console.log(adduser_q);
-      // const adduser_result = await pool.query(adduser_q)
-      // res.json(adduser_result.rows);
-      res.redirect('http://localhost3000/main_page');
+    if (error.isEmpty()) {
+      return res.json({ message: 'Some data are missing' });
     }
-    res.send('User route');
+    // get query and sub from http request
+    const { email, sub } = req.body;
+
+    // check if user has existed in the db
+    let userFound = await pool.query(
+      'SELECT * FROM users WHERE email=$1 AND sub=$2',
+      [email, sub]
+    );
+
+    // if user was not found in the db
+    if (!userFound || userFound.rows.length === 0) {
+      // create a new user
+      await pool.query(
+        `INSERT INTO users(username, email VALUES${username}, ${email}) RETURNING *`
+      );
+
+      // get the newly create user, because i want the id
+      userFound = await pool.query(
+        'SELECT * FROM users WHERE email=$1 AND sub=$2',
+        [email, sub]
+      );
+      console.log(userFound);
+
+      // send the whole user info to frontend
+      return res.json({ message: 'save a new user', user: userFound.rows[0] });
+    }
+
+    // if user exists in the db
+    const total_q = `
+    SELECT distinct inco.user_id,inco2.total_income,  expe.total_expense, res.total_reserve
+    FROM incomes AS inco
+	
+    INNER JOIN
+    (SELECT user_id, SUM(i_amount) AS total_income 
+    FROM incomes 
+    GROUP BY user_id) AS inco2 
+    ON inco.user_id = inco2.user_id
+	
+    INNER JOIN
+    (SELECT user_id, SUM(e_amount) AS total_expense
+    FROM expenses 
+    GROUP BY user_id) AS expe 
+    ON expe.user_id = inco2.user_id
+	
+    INNER JOIN
+    (SELECT user_id, SUM(r_amount) AS total_reserve
+    FROM reserve_fund 
+    GROUP BY user_id) AS res 
+    ON res.user_id = inco2.user_id
+
+    WHERE inco.user_id = $1
+    
+    ORDER BY inco.user_id ASC`;
+
+    const total_result = await pool.query(total_q, [userFound.rows[0].id]); // return from query
+
+    return res.json({
+      message: 'existing user',
+      user: userFound.rows[0],
+      money: total_result.rows
+    });
   }
 );

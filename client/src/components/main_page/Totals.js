@@ -3,7 +3,8 @@ import Display from './Display';
 import CardSummary from './CardSummary';
 import TotalDisplay from './TotalDisplay';
 import Resources from './Resources';
-// import axios from 'axios';
+import axios from 'axios';
+import { Auth0Context } from '../../react-auth0-spa';
 
 class Totals extends Component {
   /*state = {
@@ -20,14 +21,38 @@ class Totals extends Component {
 
   }*/
 
+  static contextType = Auth0Context;
+
   constructor() {
     super();
     this.state = {
+      loading: false,
       user_id: 7,
       total_income: 1520.25,
       total_expense: 888.75,
       total_reserve: 380.25
     };
+  }
+
+  async componentDidMount() {
+    this.setState({ loading: true });
+
+    const userFromAuth0 = this.context.user;
+    console.log(userFromAuth0);
+
+    const res = await axios({
+      url: 'http://localhost:5000/total',
+      method: 'POST',
+      data: {
+        username: userFromAuth0.name,
+        email: userFromAuth0.email,
+        sub: userFromAuth0.sub
+      }
+    });
+    const userFromBackend = res.data.user;
+    console.log(userFromBackend);
+
+    // this.setState({ users: res.data, loading: false });
   }
 
   render() {
