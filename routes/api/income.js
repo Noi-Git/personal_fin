@@ -39,11 +39,12 @@ router.get('/income', async (req, res) => {
 // @desc    Post user income infomation
 // @access  Private
 router.post('/income', async (req, res) => {
-  const { user_id, i_name, i_amount, cleared } = req.body;
+  const { name, amount } = req.body;
+  console.log('I am i_name and i_amount', name, amount);
   try {
     const income_q = `
-    INSERT INTO incomes(user_id, i_name, i_amount,  created_at)
-VALUES(${user_id}, '${i_name}', ${i_amount}, current_timestamp) RETURNING *`;
+    INSERT INTO incomes(i_name, i_amount,  created_at)
+VALUES(${name}, ${amount}, current_timestamp) RETURNING *`;
 
     const income_result = await pool.query(income_q); // return from query
     // console.log(total_result.rows);
@@ -56,7 +57,7 @@ VALUES(${user_id}, '${i_name}', ${i_amount}, current_timestamp) RETURNING *`;
 
     // response.json(info);
   } catch (err) {
-    console.log(err.message);
+    console.log('income.js:59', err.message);
     res.status(500).send('Server Error');
   }
 });

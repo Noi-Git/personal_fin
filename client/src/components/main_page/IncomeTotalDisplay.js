@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import AddIncomeButton from '../detail_page/AddIncomeButton';
+import AddIncomeButton from '../income_detail/AddIncomeButton';
 
 const IncomeTotalDisplay = props => {
   return (

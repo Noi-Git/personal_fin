@@ -691,3 +691,30 @@ a:active {
 .user--email {
   text-align: center;
 }
+
+.about {
+  width: 70%;
+  margin: 5rem auto;
+}
+.about--title {
+  font-size: 3rem;
+  padding-bottom: 4rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.mission {
+  margin: 8rem auto;
+  background-color: rgb(240, 236, 236);
+}
+.mission--info {
+  width: 70%;
+  padding: 5rem 0 8rem 0;
+  margin: 0 auto;
+}
+.mission--title {
+  font-size: 3rem;
+  padding-bottom: 4rem;
+  text-transform: uppercase;
+  text-align: center;
+}

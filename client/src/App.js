@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
-// import Info from './components/layout/Info';
+import Info from './components/Info';
 import Totals from './components/main_page/Totals';
 import DetailMain from './components/detail_page/DetailMain';
 import IncomeDetailMain from './components/income_detail/IncomeDetailMain';
@@ -37,7 +37,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Landing} />
           <PrivateRoute exact path="/profile" component={Profile} />
-          {/*<Route exact path="/info" component={Info} />*/}
+          <Route exact path="/info" component={Info} />
           <PrivateRoute exact path="/main_page" component={Totals} />
           <PrivateRoute exact path="/detail_page" component={DetailMain} />
           <PrivateRoute
