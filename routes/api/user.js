@@ -25,15 +25,6 @@ router.post(
       .isEmpty()
   ],
   async (req, res) => {
-    // console.log(req.body); // need to initualize the middleware for req.body to work
-
-    // data sent from frontend not complete
-    // const error = validationResult(req);
-    // console.log(error);
-    // if (error.isEmpty()) {
-    //   return res.json({ message: 'Some data are missing' });
-    // }
-
     // get query and sub from http request
     const { username, email, sub } = req.body;
 

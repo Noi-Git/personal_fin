@@ -29,9 +29,7 @@ class IncomeDetailMain extends Component {
       <Fragment>
         <AddForm title={'Reserve Fund'} />
         <ReserveCardDetailSummary title={'Reserve Fund Summary'}>
-          <ReserveDetailInfo title="sister's birthday" amount="100" />
-          <ReserveDetailInfo title="rent" amount="400" />
-          <ReserveDetailInfo title="car payment" amount="200" />
+          <ReserveDetailInfo />
         </ReserveCardDetailSummary>
       </Fragment>
     );

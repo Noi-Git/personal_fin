@@ -39,20 +39,36 @@ router.get('/income', async (req, res) => {
 // @desc    Post user income infomation
 // @access  Private
 router.post('/income', async (req, res) => {
-  const { name, amount } = req.body;
-  console.log('I am i_name and i_amount', name, amount);
+  const { user_id, i_name, i_amount } = req.body;
+  console.log('I am i_name and i_amount', i_name, i_amount);
 
-    const income_q = `
-    INSERT INTO incomes(i_name, i_amount,  created_at)
-VALUES($1, $2, current_timestamp) RETURNING *`, [name, amount]
+  try {
+    const income_q = `INSERT INTO incomes(user_id, i_name, i_amount, created_at)
+      VALUES($1, $2, $3, current_timestamp) RETURNING *`;
 
-    const income_result = await pool.query(income_q); // return from query
-    return res.json({
-      message: 'income added',
-      added_income: 'income_result.rows[0]'
-    })
+    await pool.query(income_q, [i_name, i_amount]); // return from query
+    console.log('from insert income', income_result);
 
+    // get income of user_id: 'x' and id: 'y'
+    const get_income_q = `SELECT * FROM incomes WHERE user_id=$1`;
 
+    const get_income_result = await pool.query(get_income_q, [user_id]);
+    // done getting income
+
+    // if i dont get the income of user_id: x and id: y
+    // then something went wrong
+    if (!get_income_result) {
+      return res.status(400).json({
+        msg: `Fail to get income `
+      });
+    } else {
+      // send the income data to front end
+      res.json(get_income_result.rows);
+    }
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
 /* ===== UPDATE INCOME ===== */

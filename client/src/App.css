@@ -433,6 +433,34 @@ select {
   }
 }
 
+.add--button {
+  width: 70%;
+  margin: 0 auto;
+  font-size: 1.7rem;
+  padding: 0.7rem 0;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  background-color: #16a085;
+  color: #ffffff;
+}
+@media (min-width: 37.5em) {
+  .add--button {
+    width: 40%;
+  }
+}
+@media (min-width: 56.25em) {
+  .add--button {
+    width: 40%;
+  }
+}
+@media (min-width: 75em) {
+  .add--button {
+    background-color: #16a085;
+    width: 35%;
+  }
+}
+
 input[type='submit'] {
   width: 40%;
   background-color: #16a085;

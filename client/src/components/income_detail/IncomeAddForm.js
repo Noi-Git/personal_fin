@@ -1,79 +1,88 @@
-import React, { Fragment, useState } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
-const IncomeAddForm = props => {
-  const [formData, setFormData] = useState({
-    name: '',
-    amount: ''
-  });
-
-  const { name, amount } = formData; // pull name and amount out of form data
-
-  // onChange - let us type into the form
-  const onChange = e =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const onSubmit = async e => {
-    e.preventDefault();
-    const newIncome = {
-      name,
-      amount
+class IncomeAddForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user_id: '',
+      i_name: '',
+      i_amount: '',
+      loading: false
     };
-    try {
-      const config = {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      };
+  }
 
-      const body = JSON.stringify(newIncome);
-
-      const res = await axios.post('/income', body, config);
-      console.log(res.data);
-      alert('Hello from income add form');
-    } catch (err) {
-      console.log(err.response.data);
-    }
+  changeHandler = e => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
-  return (
-    <Fragment>
-      <div className="details__body">
-        <div className="input">
-          <p className="input__title">{props.title}</p>
+  submitHandler = e => {
+    e.preventDefault();
+    console.log('from submitHandler', this.state);
 
-          <form className="input__detail" onSubmit={e => onSubmit(e)}>
-            <div className="input__detail--name">
-              <label>Name of Income</label>
-              <input
-                className="input-style"
-                type="text"
-                name="name"
-                value={name}
-                onChange={e => onChange(e)}
-                required
-              />
-            </div>
+    // clear form
+    this.setState({
+      user_id: '',
+      i_name: '',
+      i_amount: ''
+    });
 
-            <div className="input__detail--amount">
-              <label>Amount: $</label>
-              <input
-                className="input-style"
-                type="text"
-                name="amount"
-                value={amount}
-                onChange={e => onChange(e)}
-                required
-              />
-            </div>
-            <div className="input--button">
-              <input type="submit" value="Add" />
-            </div>
-          </form>
+    // make POST request
+    axios
+      .post('./income', this.state)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
+  render() {
+    const { i_name, i_amount } = this.state;
+
+    return (
+      <Fragment>
+        <div className="details__body">
+          <div className="input">
+            <p className="input__title">{this.props.title}</p>
+
+            <form className="input__detail" onSubmit={this.submitHandler}>
+              <div className="input__detail--name">
+                <label>Name of Income</label>
+                <input
+                  className="input-style"
+                  type="text"
+                  name="i_name"
+                  value={i_name}
+                  onChange={this.changeHandler}
+                  required
+                />
+              </div>
+
+              <div className="input__detail--amount">
+                <label>Amount: $</label>
+                <input
+                  className="input-style"
+                  type="text"
+                  name="i_amount"
+                  value={i_amount}
+                  // onChange={this.changeHandler}
+                  onChange={this.changeHandler}
+                  required
+                />
+              </div>
+              <div className="input--button">
+                <button className="add--button" type="submit">
+                  Add to Income
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
-    </Fragment>
-  );
-};
+      </Fragment>
+    );
+  }
+}
 
 export default IncomeAddForm;

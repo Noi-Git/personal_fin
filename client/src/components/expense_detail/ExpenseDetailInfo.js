@@ -1,17 +1,36 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
+import axios from 'axios';
 
-const ExpenseDetailInfo = props => {
-  return (
-    <Fragment>
-      <div className="summary__details">
-        <p className="summary__details--name">
-          {props.title}
-          <span className="go-right">{props.amount}</span>
-          <span className="go-right">$</span>
-        </p>
-      </div>
-    </Fragment>
-  );
-};
+class ExpenseDetailInfo extends Component {
+  state = {
+    lists: []
+  };
+
+  componentDidMount() {
+    axios.get('./expense').then(res => {
+      console.log('from expense detail info ', res);
+      this.setState({ lists: res.data });
+    });
+  }
+
+  render() {
+    // destructure
+    const { lists } = this.state;
+
+    return (
+      <Fragment>
+        <div key="list.id" className="summary__details">
+          {lists.map(list => (
+            <p className="summary__details--name">
+              {list.e_name}
+              <span className="go-right">{list.e_amount}</span>
+              <span className="go-right">$</span>
+            </p>
+          ))}
+        </div>
+      </Fragment>
+    );
+  }
+}
 
 export default ExpenseDetailInfo;

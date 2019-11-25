@@ -5,7 +5,7 @@ const AddIncomeButton = props => {
   return (
     <Fragment>
       <p className="main__balance--add">
-        <Link to="/detail_page">
+        <Link to="/income_detail">
           <i
             className="fa fa-plus-square icon_summary"
             aria-hidden="true"
