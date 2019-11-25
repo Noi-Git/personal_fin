@@ -2,11 +2,22 @@
 
 Breakdown income, expense, and reserve fund into a daily budget.
 
+## Built With
+
+Node.js and Express.js - server side
+PostgresQL - database
+React.js - client side
+HTML, CSS-Grid, and Flexbox - base UI
+
+## Author
+
+Noi Sinnang (Patthamavadee)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Download and Install dependencies
+#### Download and Install dependencies
 
 ** Step 1 ** clone or download project from the repo
 
@@ -14,7 +25,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ** Step 3 ** navigate to client folder - run npm install to install all dependencies use for React client
 
-### Config environment variables
+#### Config environment variables for server
 
 ** Step 1 ** - On the sever side, at the root, create .env file and config all credentials keys with your credential
 
@@ -25,7 +36,7 @@ API_IDENTIFIER=http://localhost
 
 ```
 
-** Step 2 ** still at the root of server side
+** Step 2 ** still on the root of server side
 
     - Create a folder calls secrets
     - Inside create a file calls db_configuration.js
@@ -38,4 +49,14 @@ module.exports = {
   password: 'YOUR_DATABASE_PASSWORD',
   port: 5432 OR YOUR_PORT
 };
+```
+
+### Config environment variables for client
+
+** Step 1 ** Create a file .env.local in the root of client
+
+```
+REACT_APP_AUTH0_DOMAIN=YOUR_AUTH_DOMAIN
+REACT_APP_AUTH0_CLIENT_ID=YOUR_AUTH_KEY
+REACT_APP_API_IDENTIFIER=http://localhost
 ```
