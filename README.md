@@ -61,4 +61,5 @@ REACT_APP_AUTH0_CLIENT_ID=YOUR_AUTH_KEY
 REACT_APP_API_IDENTIFIER=http://localhost
 ```
 
-![alt money pal images](https://ibb.co/FJ9KNpS)
+![alt MoneyPal]([url=https://imgbb.com/][img]https://i.ibb.co/nfTbZpH/money-pal-img.png[/img][/url]
+[url=https://imgbb.com/]image hosting services[/url])
