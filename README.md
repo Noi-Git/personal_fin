@@ -7,7 +7,7 @@ Breakdown income, expense, and reserve fund into a daily budget.
 - Node.js and Express.js - server side
 - PostgresQL - database
 - React.js - client side
-- HTML, CSS-Grid, and Flexbox - base UI
+- HTML, CSS-Grid, Flexbox , and SCSS - base UI
 
 ## Author
 
@@ -21,9 +21,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 ** Step 1 ** clone or download project from the repo
 
-** Step 2 ** at the root of the folder - run npm install to install all dependencies use for server
+** Step 2 ** at the root of the server folder - run npm install to install all dependencies use for server
 
-** Step 3 ** navigate to client folder - run npm install to install all dependencies use for React client
+** Step 3 ** navigate to the root of client folder - run npm install to install all dependencies use for React client
 
 #### Config environment variables for server
 
@@ -51,7 +51,7 @@ module.exports = {
 };
 ```
 
-### Config environment variables for client
+#### Config environment variables for client
 
 ** Step 1 ** Create a file .env.local in the root of client
 
