@@ -20,18 +20,27 @@ class IncomeAddForm extends Component {
     e.preventDefault();
     console.log('from submitHandler', this.state);
 
-    // clear form
-    this.setState({
-      user_id: '',
-      i_name: '',
-      i_amount: ''
-    });
+    const data = {
+      user_id: this.props.user_id, // from parent component
+      i_name: this.state.i_name,
+      i_amount: this.state.i_amount
+    };
 
     // make POST request
     axios
-      .post('./income', this.state)
+      .post('./income', data)
       .then(response => {
         console.log(response);
+        console.log(response.data);
+
+        // clear form
+        this.setState(
+          {
+            i_name: '',
+            i_amount: ''
+          },
+          this.props.doRefresh()
+        );
       })
       .catch(error => {
         console.log(error);

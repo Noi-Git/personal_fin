@@ -41,29 +41,28 @@ router.get('/income', async (req, res) => {
 router.post('/income', async (req, res) => {
   const { user_id, i_name, i_amount } = req.body;
   console.log('I am i_name and i_amount', i_name, i_amount);
+  console.log('user_id:', user_id);
 
   try {
     const income_q = `INSERT INTO incomes(user_id, i_name, i_amount, created_at)
       VALUES($1, $2, $3, current_timestamp) RETURNING *`;
 
-    await pool.query(income_q, [i_name, i_amount]); // return from query
+    const income_result = await pool.query(income_q, [
+      user_id,
+      i_name,
+      i_amount
+    ]); // return from query
     console.log('from insert income', income_result);
 
-    // get income of user_id: 'x' and id: 'y'
-    const get_income_q = `SELECT * FROM incomes WHERE user_id=$1`;
-
-    const get_income_result = await pool.query(get_income_q, [user_id]);
-    // done getting income
-
-    // if i dont get the income of user_id: x and id: y
+    // if i dont get the income of user_id: x
     // then something went wrong
-    if (!get_income_result) {
+    if (!income_result) {
       return res.status(400).json({
         msg: `Fail to get income `
       });
     } else {
       // send the income data to front end
-      res.json(get_income_result.rows);
+      res.json(income_result.rows);
     }
   } catch (err) {
     console.log(err.message);
