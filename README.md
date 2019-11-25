@@ -60,3 +60,5 @@ REACT_APP_AUTH0_DOMAIN=YOUR_AUTH_DOMAIN
 REACT_APP_AUTH0_CLIENT_ID=YOUR_AUTH_KEY
 REACT_APP_API_IDENTIFIER=http://localhost
 ```
+
+![alt money pal images](https://photos.google.com/album/AF1QipOy3w_vXfXK73AR3HIpO-0IfADDRxTmgYtRj6yo/photo/AF1QipN7lzor_km9Dvya5E4EQJoV4p9eH1kVZz43LiyZ)
