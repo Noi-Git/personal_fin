@@ -21,7 +21,8 @@ const Navbar = props => {
           </Link>
 
           {!isAuthenticated && (
-            <button
+            <div
+              className="login--icon"
               onClick={() =>
                 loginWithRedirect({
                   redirect_uri: 'http://localhost:3000/main_page'
@@ -29,7 +30,7 @@ const Navbar = props => {
               }
             >
               <i className="fa fa-sign-in" aria-hidden="true"></i>
-            </button>
+            </div>
           )}
 
           {isAuthenticated && (
@@ -39,9 +40,9 @@ const Navbar = props => {
           )}
 
           {isAuthenticated && (
-            <button onClick={() => logout()}>
+            <div className="login--icon" onClick={() => logout()}>
               <i className="fa fa-sign-out" aria-hidden="true"></i>
-            </button>
+            </div>
           )}
 
           {/* NEW - add a link to the home and profile pages */}

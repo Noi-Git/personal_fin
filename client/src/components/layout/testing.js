@@ -25,7 +25,7 @@ class Testing extends Component {
   render() {
     const totalDaysInMonth = moment().daysInMonth();
     const todayDate = moment().format('D');
-    const toTheEndOfTheMonth = totalDaysInMonth - todayDate;
+    // const toTheEndOfTheMonth = totalDaysInMonth - todayDate;
 
     return (
       <Fragment>

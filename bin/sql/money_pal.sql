@@ -4,7 +4,8 @@
 CREATE TABLE users(
 	id SERIAL PRIMARY KEY,
 	username VARCHAR(90),
-	email VARCHAR(60) unique,
+	email VARCHAR(60),
+	sub VARCHAR(100) unique,
 	created_at TIMESTAMP default current_timestamp,
 	updated_at TIMESTAMP,
 	deleted_at TIMESTAMP

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-const CardDetailSummary = props => {
+const IncomeCardDetailSummary = props => {
   return (
     <Fragment>
       <div className="summary">
@@ -11,4 +11,4 @@ const CardDetailSummary = props => {
   );
 };
 
-export default CardDetailSummary;
+export default IncomeCardDetailSummary;

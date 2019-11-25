@@ -28,7 +28,7 @@ let store = createStore(rootReducer);
 ReactDOM.render(
   <Auth0Provider
     domain={config.domain}
-    audience={'http://localhost'}
+    audience={config.audience}
     client_id={config.clientId}
     redirect_uri={window.location.origin}
     onRedirectCallback={onRedirectCallback}

@@ -79,7 +79,7 @@ body {
 }
 @media (min-width: 37.5em) {
   .nav__info {
-    border-bottom: 0.3px solid #e94514;
+    /* border-bottom: 0.3px solid #e94514; */
   }
 }
 @media (min-width: 56.25em) {
@@ -403,21 +403,82 @@ select {
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 .login--button {
-  width: 100%;
+  width: 50%;
   margin: 0 auto;
+  font-size: 1.7rem;
+  padding: 0.7rem 0;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
+  background-color: #16a085;
+  color: #ffffff;
+  cursor: pointer;
 }
 @media (min-width: 37.5em) {
   .login--button {
-    width: 50%;
+    width: 30%;
+  }
+}
+@media (min-width: 56.25em) {
+  .login--button {
+    width: 20%;
   }
 }
 @media (min-width: 75em) {
   .login--button {
+    background-color: #16a085;
+    width: 15%;
+  }
+}
+
+.trash--button {
+  padding: 0 0.5rem;
+  margin: 0 rem;
+  color: #ff5722;
+  cursor: pointer;
+}
+
+.edit--button {
+  padding: 0 0.5rem;
+  margin: 0 rem;
+  color: #16a085;
+  cursor: pointer;
+}
+
+.login--icon {
+  cursor: pointer;
+  color: white;
+}
+
+.add--button {
+  width: 70%;
+  margin: 0 auto;
+  font-size: 1.7rem;
+  padding: 0.7rem 0;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  background-color: #16a085;
+  color: #ffffff;
+  cursor: pointer;
+}
+@media (min-width: 37.5em) {
+  .add--button {
+    width: 40%;
+  }
+}
+@media (min-width: 56.25em) {
+  .add--button {
+    width: 40%;
+  }
+}
+@media (min-width: 75em) {
+  .add--button {
+    background-color: #16a085;
     width: 35%;
   }
 }
@@ -479,7 +540,7 @@ input[type='submit']:hover {
 }
 @media (min-width: 37.5em) {
   .details__body {
-    grid-template-rows: 26vh;
+    grid-template-rows: 24vh;
   }
 }
 @media (min-width: 56.25em) {
@@ -489,7 +550,7 @@ input[type='submit']:hover {
 }
 @media (min-width: 75em) {
   .details__body {
-    grid-template-rows: 26vh;
+    grid-template-rows: 36vh;
   }
 }
 
@@ -513,6 +574,7 @@ input[type='submit']:hover {
   font-size: 1.7rem;
   text-align: center;
   padding-bottom: 3rem;
+  padding-top: 1.5rem;
 }
 @media (min-width: 37.5em) {
   .input__title {
@@ -527,6 +589,7 @@ input[type='submit']:hover {
 @media (min-width: 75em) {
   .input__title {
     font-size: 2.5rem;
+    padding-top: 2.5rem;
   }
 }
 
@@ -614,4 +677,94 @@ a:visited,
 a:hover,
 a:active {
   color: white;
+}
+
+.summary--title {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  width: 94%;
+  margin: 2rem auto 0 auto;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+}
+@media (min-width: 37.5em) {
+  .summary {
+    width: 76%;
+    margin: 10rem auto 0 auto;
+  }
+}
+@media (min-width: 56.25em) {
+  .summary {
+    width: 70%;
+  }
+}
+@media (min-width: 75em) {
+  .summary {
+    width: 60%;
+    margin: 2rem auto 0 auto;
+  }
+}
+
+/* === USER PROFILE ===*/
+.user {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+.user--img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  border-radius: 50%;
+  margin-top: 2rem;
+}
+@media (min-width: 37.5em) {
+  .user--img {
+    width: 20%;
+    margin: 6rem auto 0 auto;
+  }
+}
+@media (min-width: 75em) {
+  .user--img {
+    width: 15%;
+  }
+}
+
+.user--name {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.user--email {
+  text-align: center;
+}
+
+.about {
+  width: 70%;
+  margin: 5rem auto;
+}
+.about--title {
+  font-size: 3rem;
+  padding-bottom: 4rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.mission {
+  margin: 8rem auto;
+  background-color: rgb(240, 236, 236);
+}
+.mission--info {
+  width: 70%;
+  padding: 5rem 0 8rem 0;
+  margin: 0 auto;
+}
+.mission--title {
+  font-size: 3rem;
+  padding-bottom: 4rem;
+  text-transform: uppercase;
+  text-align: center;
 }
