@@ -4,10 +4,10 @@ Breakdown income, expense, and reserve fund into a daily budget.
 
 ## Built With
 
-Node.js and Express.js - server side
-PostgresQL - database
-React.js - client side
-HTML, CSS-Grid, and Flexbox - base UI
+- Node.js and Express.js - server side
+- PostgresQL - database
+- React.js - client side
+- HTML, CSS-Grid, and Flexbox - base UI
 
 ## Author
 
