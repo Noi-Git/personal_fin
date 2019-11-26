@@ -14,9 +14,6 @@ import Profile from './components/Profile';
 import PrivateRoute from './components/PrivateRoute';
 // import ExternalApi from './views/ExternalApi';
 
-import Component1 from './functional/component1';
-import Container1 from './containers/Container1';
-
 import './App.css';
 
 const App = () => {
@@ -59,8 +56,6 @@ const App = () => {
           {/* <Route path="/" component={NotFound} /> */}
           {/*<PrivateRoute path="/external-api" component={ExternalApi} />*/}
         </Switch>
-        <Component1 name="Noi" />
-        <Container1 />
       </Fragment>
     </Router>
   );

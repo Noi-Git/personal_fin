@@ -130,6 +130,7 @@ router.put('/income', async (req, res) => {
 // @access  Private
 router.delete('/income', async (req, res) => {
   const { id } = req.body;
+
   try {
     const delete_income_q = `DELETE FROM incomes WHERE id=$1`;
 

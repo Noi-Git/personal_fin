@@ -29,19 +29,27 @@ class IncomeDetailInfo extends Component {
   }
 
   deleteHandler = e => {
-    e.preventDefault();
+    // e.preventDefault();
 
     const index = e.target.parentNode.parentNode.getAttribute('index');
+    console.log('before axios index', index);
     const itemToDelete = this.state.lists[index];
     console.log('itemToDelete:', itemToDelete);
-    // console.log('from submitHandler', this.state);
+
+    const data = {
+      data: { id: itemToDelete.id }
+    };
+
+    // this.setState({
+    //   data: [...this.state.lists.filter(list => itemToDelete.id !== id)]
+    // });
 
     // make POST request
     axios
-      .delete('./income', itemToDelete)
+      .delete('/income', data)
       .then(response => {
-        console.log(response);
-        console.log(response.data);
+        console.log('response from axios', response);
+        console.log('from axios delete', response.data);
       })
       .catch(error => {
         console.log(error);
@@ -52,21 +60,6 @@ class IncomeDetailInfo extends Component {
   // deleteIncome = id => {
   //   console.log(id);
   // };
-
-  // state = {
-  //   lists: []
-  // };
-
-  // componentDidMount() {
-  //   axios.get('./income').then(res => {
-  //     console.log('from income detail info ', res);
-  //     this.setState({ lists: res.data });
-  //   });
-  // .catch(error => {
-  //   console.log(error)
-  //   this.setState({errorMsg: "Error retreiving data"})
-  // })
-  // }
 
   render() {
     // destructure
