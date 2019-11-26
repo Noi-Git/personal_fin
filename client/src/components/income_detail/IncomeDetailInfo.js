@@ -28,7 +28,7 @@ class IncomeDetailInfo extends Component {
     }
   }
 
-  deleteHandler = e => {
+  deleteHandler = (e, prevProps) => {
     // e.preventDefault();
 
     const index = e.target.parentNode.parentNode.getAttribute('index');
@@ -50,6 +50,8 @@ class IncomeDetailInfo extends Component {
       .then(response => {
         console.log('response from axios', response);
         console.log('from axios delete', response.data);
+
+        this.props.doRefresh();
       })
       .catch(error => {
         console.log(error);
