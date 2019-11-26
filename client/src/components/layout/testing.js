@@ -55,6 +55,8 @@ class Testing extends Component {
           // <Link to="/login">
           //   <i className={this.props.i_signin} aria-hidden="true"></i>
           // </Link>
+
+          // test
           ()}
       </Fragment>
     );
