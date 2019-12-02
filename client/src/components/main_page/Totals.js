@@ -94,7 +94,7 @@ class Totals extends Component {
           />
         </CardSummary>
         <Resources
-          recipies_title="Recipies"
+          recipies_title="Recipes"
           ingredients_title="Ingredients"
           job_title="Local Job"
         />

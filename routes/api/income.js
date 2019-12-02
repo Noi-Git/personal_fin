@@ -40,8 +40,8 @@ router.get('/income', async (req, res) => {
 // @access  Private
 router.post('/income', async (req, res) => {
   const { user_id, i_name, i_amount } = req.body;
-  console.log('I am i_name and i_amount', i_name, i_amount);
-  console.log('user_id:', user_id);
+  // console.log('I am i_name and i_amount', i_name, i_amount);
+  // console.log('user_id:', user_id);
 
   try {
     const income_q = `INSERT INTO incomes(user_id, i_name, i_amount, created_at)
@@ -52,7 +52,7 @@ router.post('/income', async (req, res) => {
       i_name,
       i_amount
     ]); // return from query
-    console.log('from insert income', income_result);
+    // console.log('from insert income', income_result);
 
     // if i dont get the income of user_id: x
     // then something went wrong
