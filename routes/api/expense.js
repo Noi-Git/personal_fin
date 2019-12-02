@@ -44,9 +44,13 @@ router.post('/expense', async (req, res) => {
   try {
     const expense_q = `
     INSERT INTO expenses(user_id, e_name, e_amount, created_at)
-VALUES(${user_id}, '${e_name}', ${e_amount}, current_timestamp) RETURNING *`;
+VALUES($1, $2, $3, current_timestamp) RETURNING *`;
 
-    const expense_result = await pool.query(expense_q); // return from query
+    const expense_result = await pool.query(expense_q, [
+      user_id,
+      e_name,
+      e_amount
+    ]); // return from query
     // console.log(total_result.rows);
 
     if (!expense_result) {

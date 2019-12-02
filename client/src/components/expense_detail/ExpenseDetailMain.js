@@ -28,7 +28,7 @@ class ExpenseDetailMain extends Component {
         sub: userFromAuth0.sub
       }
     });
-    console.log('[IncomeDetailMain]', res.data);
+    console.log('[ExpenseDetailMain]', res.data);
     this.setState({ user_id: res.data.user.id });
   }
 

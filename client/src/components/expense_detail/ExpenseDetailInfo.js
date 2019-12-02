@@ -69,8 +69,20 @@ class ExpenseDetailInfo extends Component {
           {lists.map((list, index) => (
             <p key={index} index={index} className="summary__details--name">
               {list.e_name}
-              <span className="go-right">{list.e_amount}</span>
-              <span className="go-right">$</span>
+              <span className="go-right">
+                <i
+                  className="fa fa-trash-o trash--button"
+                  aria-hidden="true"
+                  onClick={this.deleteHandler}
+                ></i>
+              </span>
+              &nbsp;&nbsp;
+              <span className="go-right">
+                <i className="fa fa-pencil edit--button" aria-hidden="true"></i>
+              </span>
+              &nbsp;&nbsp;
+              <span className="go-right">{list.e_amount}&nbsp;&nbsp;</span>
+              <span className="go-right">$&nbsp;</span>
             </p>
           ))}
         </div>
