@@ -80,11 +80,11 @@ class Totals extends Component {
         <CardSummary title="Summary">
           <IncomeTotalDisplay
             total_amount={this.state.total_income}
-            total_type="Income"
+            total_type="Monthly Income"
           />
           <ExpenseTotalDisplay
             total_amount={this.state.total_expense}
-            total_type="Expense"
+            total_type="Monthly Expense"
             link_to="expense_detail"
           />
           <ReserveTotalDisplay
