@@ -50,12 +50,10 @@ app.use('/', require('./routes/api/reserve'));
 app.use('/', require('./routes/api/user'));
 
 // Serve static assets in production
-if (process.env.NODE.ENV == 'production') {
-  // Set static folder
+if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
-
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
 }
 
