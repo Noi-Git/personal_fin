@@ -40,7 +40,7 @@ app.get('/api/external', checkJwt, (req, res) => {
 });
 
 /* ==== make sure to get rid of app.get('/', (req, res) => res.send('API Running')) === */
-app.get('/', (req, res) => res.send('API Running'));
+// app.get('/', (req, res) => res.send('API Running'));
 
 // Define Routes -- when type ex. /api/users - it will go get /routes/api/user
 app.use('/', require('./routes/api/total'));

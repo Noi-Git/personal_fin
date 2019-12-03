@@ -1,0 +1,4 @@
+DROP TABLE users CASCADE;
+DROP TABLE incomes CASCADE;
+DROP TABLE expenses CASCADE;
+DROP TABLE reserve_fund CASCADE;
