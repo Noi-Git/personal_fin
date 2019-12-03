@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const pool = require('../../db/index');
+const { pool } = require('../../config.js');
 
 /* ===== GET EXPENSES ===== */
 // @route   GET routes/api/expense
