@@ -32,7 +32,8 @@ ReactDOM.render(
     domain={config.domain}
     audience={config.audience}
     client_id={config.clientId}
-    redirect_uri={window.location.origin}
+    // redirect_uri={window.location.origin}
+    redirect_uri={'https://my-money-pal.herokuapp.com/main_page'}
     onRedirectCallback={onRedirectCallback}
   >
     <Provider store={store}>
