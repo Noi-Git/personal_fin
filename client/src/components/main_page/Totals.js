@@ -53,9 +53,15 @@ class Totals extends Component {
     });
     console.log(res.data);
     const userFromBackend = res.data.user;
-    const budgetFromBackend = res.data.budget;
+    let budgetFromBackend = res.data.budget;
     console.log('userFromBackend', userFromBackend);
     console.log('budgetFromBackend:', budgetFromBackend);
+
+    if (!budgetFromBackend) {
+      budgetFromBackend.total_income = 0;
+      budgetFromBackend.total_expense = 0;
+      budgetFromBackend.total_reserve = 0;
+    }
 
     this.setState({
       loading: false,

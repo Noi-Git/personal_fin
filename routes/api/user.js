@@ -51,19 +51,19 @@ router.post(
     SELECT distinct inco.user_id,inco2.total_income,  expe.total_expense, res.total_reserve
     FROM incomes AS inco
 	
-    INNER JOIN
+    LEFT JOIN
     (SELECT user_id, SUM(i_amount) AS total_income 
     FROM incomes 
     GROUP BY user_id) AS inco2 
     ON inco.user_id = inco2.user_id
 	
-    INNER JOIN
+    LEFT JOIN
     (SELECT user_id, SUM(e_amount) AS total_expense
     FROM expenses 
     GROUP BY user_id) AS expe 
     ON expe.user_id = inco2.user_id
 	
-    INNER JOIN
+    LEFT JOIN
     (SELECT user_id, SUM(r_amount) AS total_reserve
     FROM reserve_fund 
     GROUP BY user_id) AS res 
