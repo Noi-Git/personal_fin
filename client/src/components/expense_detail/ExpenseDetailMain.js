@@ -20,7 +20,7 @@ class ExpenseDetailMain extends Component {
     const userFromAuth0 = await this.context.user;
 
     const res = await axios({
-      url: 'http://localhost:5000/user',
+      url: 'https://my-money-pal.herokuapp.com/user',
       method: 'POST',
       data: {
         username: userFromAuth0.name,
