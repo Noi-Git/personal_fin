@@ -21,14 +21,7 @@ const Navbar = props => {
           </Link>
 
           {!isAuthenticated && (
-            <div
-              className="login--icon"
-              onClick={() =>
-                loginWithRedirect({
-                  redirect_uri: 'http://localhost:3000/main_page'
-                })
-              }
-            >
+            <div className="login--icon" onClick={() => loginWithRedirect({})}>
               <i className="fa fa-sign-in" aria-hidden="true"></i>
             </div>
           )}

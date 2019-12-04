@@ -14,11 +14,7 @@ const Login = () => {
         {!isAuthenticated && (
           <button
             className="login--button"
-            onClick={() =>
-              loginWithRedirect({
-                redirect_uri: 'http://localhost:3000/main_page'
-              })
-            }
+            onClick={() => loginWithRedirect({})}
           >
             Login / Register
           </button>
