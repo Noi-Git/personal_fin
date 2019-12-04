@@ -25,6 +25,8 @@ const onRedirectCallback = appState => {
 // create redux store
 let store = createStore(rootReducer);
 
+console.log('config:', config);
+
 ReactDOM.render(
   <Auth0Provider
     domain={config.domain}
